@@ -31,7 +31,12 @@ export const recipes = {
         "sal": "8g",
         "ovo": "2",
       },
-      steps: {1:""},
+      steps: {1:"Numa panela misturar leite, água, óleo e sal e levar ao fogo até ferver;",
+      2: "Colocar o polvilho doce e o polvilho azedo numa tigela e adicionar a mistura fervida;",
+      3: "Misturar bem e deixar esfriar;",
+      4: "Adicionar o queijo e misturar;",
+      5: "Adicionar os ovos um por vez até incorprar na massa;",
+      6: "Fazer bolinhas e assar em forno 180C por 20 minutos ou até dourar."},
     },
     {
       id: 3,
@@ -76,7 +81,12 @@ export const recipes = {
           "cominho": "1/2 colher de chá",
           "sal":  "a gosto",
       },
-      "steps": {1: ""},
+      "steps": {
+        1: "Num processador de alimentos adicionar o tahini, suco de limão e alho e processar por 1 minuto;",
+        2: "Adicionar o grão de bico, cominho e sal e processar por 1 minuto;",
+        3: "Adicionar azeite e processar por 1 minuto;",
+        4: "Caso a consistência esteja muito grossa, adicione água aos poucos e processe até atingir a textura desejada."
+      }
     },
     {
       id: 6,
@@ -88,7 +98,13 @@ export const recipes = {
           "farinha": "100 g",
           "Sal, pimenta do reina e noz moscada": "a gosto",
       },
-      "steps": {1:""}
+      "steps": {1:"Adicione as batatas em água fria, leva ao fogo e as cozinhe até ficarem macias, porém resistentes;",
+      2: "Descasque as batatas e passe-as pelo espremedor;",
+      3: "Adicione o parmesão, sal, pimenta do reino e noz moscada;",
+      4: "Adicione a farinha aos poucos e misture até formar uma massa homogênea;",
+      5: "Faça rolinhos com a massa e corte em pedaços de 2 cm;",
+      6: "Cozinhe em água fervente até subirem à superfície;",
+      7: "Sirva com o molho de sua preferência."}
     },
     {
       id: 7,
@@ -195,7 +211,12 @@ export const recipes = {
         "sal": "a gosto",
         "paprica": "a gosto",
       },
-      steps: {1:""},
+      steps: {1:"Em uma panela coloque o leite, a manteiga, o sal e a paprica e leve ao fogo até levantar fervura;",
+      2: "Adicione a batata cozida e amassada a mistura;",
+      3: "Adicione a farinha de uma vez e mexa até desgrudar do fundo da panela e obter uma massa homogenea;",
+      4: "Remova a massa da panela e sove até estar bem lisinha;",
+      5: "Envolva a massa em plastico filme e deixe descansar na geladeira;",
+      6: "Abra a massa e recheie com o recheio de sua preferencia."}
     },
 
     {
