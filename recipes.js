@@ -134,7 +134,16 @@ export const recipes = {
           "azeite":"1/8 xícara",
 
       },
-      steps: {1: ""}
+      steps: {1: "Numa tigela, misture o fermento e o açúcar. Adicione água morna e misture bem para dissolver. Deixe em temperatura ambiente até espumar – cerca de 5 minutos;",
+    2: "Enquanto isso, na tigela da batedeira, misture a farinha com o sal e abra um buraco no centro. Separe uma tigela ou outro recipiente grande e unte com 2 colheres (sopa) de azeite – ela tem que ter espaço suficiente para a massa crescer bastante;",
+    3: "Assim que espumar, despeje a mistura de fermento no centro da tigela com farinha. Adicione ¼ de xícara (chá) de azeite e misture, com uma espátula, apenas para incorporar;",
+    4: "Para sovar a massa: encaixe a tigela na batedeira com o gancho; comece a bater em velocidade baixa por 5 minutos; aumente a velocidade, aos poucos, para alta e deixe bater por mais 15 minutos até formar uma massa lisa – ela vai descolar da lateral da tigela e formar uma bola no gancho da batedeira;",
+    5: "Com as pontas dos dedos (ou uma espátula), desgrude a massa da tigela da batedeira e transfira para o recipiente untado com azeite. Cubra com filme e deixe descansar por 1 hora, até crescer e dobrar de volume;",
+    6: "Quando faltar 30 minutos para completar o tempo de crescimento da massa, preaqueça o forno a 250 ºC (temperatura alta). Se for utilizar uma assadeira de pedra sabão, coloque-a dentro do forno ainda frio para aquecer desde o início – caso contrário, ela pode rachar com o choque térmico;",
+    7: "Polvilhe uma bancada lisa com farinha de trigo; transfira a massa de pizza para a bancada e, com uma espátula (ou faca) divida em 4 porções. Separe uma porção da massa para abrir e cubra o restante com um pano de prato para não ressecar;",
+    8: "Com o rolo de macarrão, abra a massa formando um círculo de cerca de 30 cm de diâmetro – lembre-se de sempre polvilhar a bancada com farinha para a massa não grudar."
+  }
+
     },
     {
       id: 9,
@@ -163,7 +172,13 @@ export const recipes = {
           "manteiga amolecida":"4 col sopa",
           "baunilha":"1 col chá",
       },
-      steps: {1:""}
+      steps: {1:"Em uma vasilha, adicione a farinha, o açúcar, o fermento e o sal. Misture bem;",
+      2:"Em outra vasilha, adicione o leite, o ovo, a manteiga (amolecida - não pode ser 100% derretida) e a baunilha. Misture bem;",
+      3:"Adicione a mistura líquida à mistura seca e misture até ficar homogêneo;",
+      4:"Aqueça uma frigideira antiaderente em fogo médio e unte com manteiga;",
+      5:"Coloque 1/4 de xícara de massa na frigideira e cozinhe até que a parte de baixo esteja dourada e a parte de cima esteja com bolhas;",
+      6:"Vire a panqueca e cozinhe até dourar;",
+      }
     },
     {
       id: 11,
@@ -228,6 +243,7 @@ export const recipes = {
           "milk": "120g",
           "flour": "25g",
         },
+        "dough": {
         "sugar": "20g",
         "milk": "200g",
         "yeast": "7g",
@@ -236,9 +252,23 @@ export const recipes = {
         "egg": "1",
         "flour": "360g",
         "unsalted butter": "45g",
-        "egg wash": "1 egg whisked with 1 Tbsp water",
+        "egg wash": "1 egg whisked with 1 tbsp water",
          },
-      steps: {1:""},
+      },
+      steps: {1:"Em uma panela coloque o leite e a farinha e leve ao fogo até engrossar;",
+      2: "Em um bowl de batedeira, acrescente a mistura de farinha e leite;",
+      3: "Adicione o restante dos ingredientes, exceto a manteiga;",
+      4: "Ligue a batedeira em velocidade média e bata por 10 minutos;",
+      5: "Adicione a manteiga aos poucos e bata até incorporar;",
+      6: "Em uma bancada enfarinhada, coloque a massa e dobre para formar uma bola;",
+      7: "Coloque a massa em um bowl e cubra com plastico filme ou pano de prato;",
+      8: "Deixe descansar até que triplique de volume;",
+      9: "Divida a massa em bolinhas de 90g cada;",
+      10: "Boleie para que fiquem arrendodas;",
+      11: "Coloque as bolinhas em uma forma forrada com papel manteiga;",
+      12: "Cubra com pano de prato e deixe descansar por 40 minutos",
+      13: "Pincele com ovo batido e leve ao forno pré aquecido a 180C até que dourem;",
+      14: "Retire do forno e deixe esfriar."},
     },
     {
       id: 15,
