@@ -1,7 +1,29 @@
 "use client"
 import Link from 'next/link'
 import capitalizeFirstLetter from '../utils/capitalizeFirstLetter.js'
+import styled from 'styled-components'
 
+const ListContainer = styled.div`
+  margin-top: 20px;
+`;
+
+const CategoryTitle = styled.h2`
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+`;
+
+const RecipeLink = styled.div`
+ display: inline-block;
+  font-size: 1.2rem;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 5px;
+
+
+  &:hover {
+    color: #ff5733;
+  }
+`;
 
 export default function BigUseClient({ data }) {
 
@@ -10,19 +32,19 @@ export default function BigUseClient({ data }) {
 
 
   const RecipeList = ({ recipes, category }) => (
-    <>
-      <h2>{capitalizeFirstLetter(category)}</h2>
+    <ListContainer>
+      <CategoryTitle>{capitalizeFirstLetter(category)}</CategoryTitle>
       <ul>
         {recipes.map((recipe) => (
           <li
           key={recipe.id}>
             <Link href={{pathname:`/recipes/${encodeURIComponent(recipe.title)}`, query: { object: JSON.stringify(recipe) }}} as={`/recipes/${recipe.title}`}>
-              <h3>{capitalizeFirstLetter(recipe.title)}</h3>
+              <RecipeLink>{capitalizeFirstLetter(recipe.title)}</RecipeLink>
             </Link>
           </li>
         ))}
       </ul>
-    </>
+    </ListContainer>
   );
 
   return (
