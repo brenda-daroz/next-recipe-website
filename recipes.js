@@ -293,6 +293,20 @@ export const recipes = {
         },
     },
       steps: {1:"preheat oven to 350F", 2:"bake for 50 min", 3:"cool for 1 hour", 4:"refrigerate for 4 hours"},
-  }
+   },
+   {
+    id: 15,
+    type: "sweet",
+    title: "Bolinho de chuva",
+    ingredients: {
+        "flour": "140 g",
+        "sugar": "80 g",
+        "milk": "100 mL",
+        "egg": "1 small",
+        "baking powder": "7 g",
+        "vanilla extract": "1 tsp",
+  },
+    steps: {1:""},
+ }
   ]
 }
