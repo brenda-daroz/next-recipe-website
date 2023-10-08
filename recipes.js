@@ -295,7 +295,7 @@ export const recipes = {
       steps: {1:"preheat oven to 350F", 2:"bake for 50 min", 3:"cool for 1 hour", 4:"refrigerate for 4 hours"},
    },
    {
-    id: 15,
+    id: 16,
     type: "sweet",
     title: "Bolinho de chuva",
     ingredients: {
@@ -307,6 +307,25 @@ export const recipes = {
         "vanilla extract": "1 tsp",
   },
     steps: {1:""},
- }
+ },
+ {
+ id: 17,
+    type: "sweet",
+    title: "Cookie",
+    ingredients: {
+        "butter": "120 g",
+        "brown sugar": "100 g",
+        "sugar": "100 g",
+        "egg": "1",
+        "flour": "225 g",
+        "salt": "1/2 tsp",
+        "vanilla extract": "2 tsp",
+        "baking powder": "1/2 tsp",
+        "baking soda": "1/2 tsp",
+        "chocolate chips": "200 g",
+  },
+    steps: {1:"Add butter into a pot and heat medium heat", 2:"Cook until butter is browned", 3:"Cool butter", 4:"Mix butter and sugar", 5:"Add egg and vanilla extract", 6:"Mix flour, salt, baking powder, and baking soda", 7:"Add chocolate chips", 8:"Leave in fridge for 30 min", 9:"Bake for 20 min at 190C"},
+ },
+
   ]
 }
