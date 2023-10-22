@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+// /** @type {import('next').NextConfig} */
 // const nextConfig = {}
 
 const pathPrefix = process.env.NODE_ENV === 'production'
