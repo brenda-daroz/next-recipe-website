@@ -1,12 +1,17 @@
 {
   "name": "next-app",
+  "homepage": "https://brenda-daroz.github.io/next-recipe-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "lint": "next lint",
+    "replaceFilePaths": "node replacer.js",
+    "build": "next build && next export -o build && npm run replaceFilePaths",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export -o build && npm run replaceFilePaths",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "eslint": "8.46.0",
