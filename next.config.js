@@ -5,9 +5,9 @@ const pathPrefix = process.env.NODE_ENV === 'production'
   : '';
 
   const nextConfig = {
-    basePath: pathPrefix,
-  //  output: "export",
-   distDir: 'dist',
+  basePath: pathPrefix,
+   output: "export",
+  //  distDir: 'dist',
    images: {
      unoptimazed: true,
    },
