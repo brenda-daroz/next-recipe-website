@@ -28,7 +28,7 @@ export async function fazTudo() {
 }
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const data = await fazTudo()
   return { props: { data } }
 }

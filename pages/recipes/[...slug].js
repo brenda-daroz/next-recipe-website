@@ -4,9 +4,9 @@ import Recipe from '../../components/Recipe'
 export default function Page() {
   const router = useRouter();
   const data = router.query;
-  const recipe = JSON.parse(data.object)
+  const recipe = recipe ? JSON.parse(data.object) : null;
 
-  console.log(JSON.parse(data.object))
+  // console.log(JSON.parse(data.object))
 
 return (
   <>
