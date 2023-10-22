@@ -2,12 +2,12 @@
 // const nextConfig = {}
 
 const pathPrefix = process.env.NODE_ENV === 'production'
-  ? '/next-recipe-website/'
+  ? 'https://brenda-daroz.github.io/next-recipe-website'
   : '';
 
 module.exports = {
-  assetPrefix: pathPrefix,
   env: {
     pathPrefix,
+    assetPrefix: './'
   },
 };
