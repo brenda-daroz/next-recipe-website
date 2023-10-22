@@ -1,5 +1,6 @@
 "use client"
-import Link from 'next/link'
+// import Link from 'next/link'
+import PrefixedLink from './PrefixedLink.js'
 import capitalizeFirstLetter from '../utils/capitalizeFirstLetter.js'
 import styled from 'styled-components'
 
@@ -38,9 +39,9 @@ export default function BigUseClient({ data }) {
         {recipes.map((recipe) => (
           <li
           key={recipe.id}>
-            <Link href={{pathname:`/recipes/${encodeURIComponent(recipe.title)}`, query: { object: JSON.stringify(recipe) }}} as={`/recipes/${recipe.title}`}>
+            <PrefixedLink href={{pathname:`/recipes/${encodeURIComponent(recipe.title)}`, query: { object: JSON.stringify(recipe) }}} as={`/recipes/${recipe.title}`}>
               <RecipeLink>{capitalizeFirstLetter(recipe.title)}</RecipeLink>
-            </Link>
+            </PrefixedLink>
           </li>
         ))}
       </ul>
