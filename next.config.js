@@ -1,20 +1,17 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {}
+/** @type {import('next').NextConfig} */
 
-// const pathPrefix = process.env.NODE_ENV === 'production'
-//   ? 'https://brenda-daroz.github.io/next-recipe-website'
-//   : '';
+const pathPrefix = process.env.NODE_ENV === 'production'
+  ? '/next-recipe-website'
+  : '';
 
-// module.exports = {
-//   env: {
-//     pathPrefix,
-//     assetPrefix: './'
-//   },
-// };
+  const nextConfig = {
+    basePath: pathPrefix,
+   output: "export",
+   distDir: 'dist',
+   images: {
+     unoptimazed: true,
+   },
 
-module.exports = {
-  env: {
-    PUBLIC_URL: "https://brenda-daroz.github.io/next-recipe-website",
-    assetPrefix: './'
   }
-};
+
+module.exports = nextConfig
