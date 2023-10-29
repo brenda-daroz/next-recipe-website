@@ -1,34 +1,23 @@
 import BigUseClient from "@/components/BigUseClient";
-import {recipes} from '../recipes.js'
+import { recipes } from "../recipes.js";
 import Head from "next/head";
 
-export default function Page({ data }) {
-
-
+export default function Page({ recipes }) {
   return (
-
     <>
       <Head>
         {/* HTML Meta Tags */}
-        <title>Brenda's Recipes</title>
+        <title>Brenda Recipes</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="description" content="Brenda's Favorite Recipes" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
       </Head>
-      <BigUseClient data={data} />
+      <BigUseClient recipes={recipes} />
     </>
   );
 }
-export async function fazTudo() {
-  const response = await recipes;
-  // console.log(discographyData)
-  return response;
-}
 
-
-export const getStaticProps = async () => {
-  const data = await fazTudo()
-  return { props: { data } }
-}
+export const getStaticProps = () => {
+  return { props: { recipes: recipes } };
+};
