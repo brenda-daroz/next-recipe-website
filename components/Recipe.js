@@ -28,9 +28,7 @@ const SubList = styled.ul`
   padding-left: 20px;
 `;
 
-
-export default function Recipes ({ ingredients, steps }) {
-
+export default function Recipes({ ingredients, steps }) {
   return (
     <RecipeContainer>
       <SectionTitle>Ingredients</SectionTitle>
@@ -41,11 +39,13 @@ export default function Recipes ({ ingredients, steps }) {
               <>
                 <div>{ingredient}:</div>
                 <ul>
-                  {Object.entries(stringOrObj).map(([subIngredient, subAmount]) => (
-                    <SubList key={subIngredient}>
-                      {capitalizeFirstLetter(subIngredient)} - {subAmount}
-                    </SubList>
-                  ))}
+                  {Object.entries(stringOrObj).map(
+                    ([subIngredient, subAmount]) => (
+                      <SubList key={subIngredient}>
+                        {capitalizeFirstLetter(subIngredient)} - {subAmount}
+                      </SubList>
+                    )
+                  )}
                 </ul>
               </>
             ) : (
@@ -57,10 +57,11 @@ export default function Recipes ({ ingredients, steps }) {
       <SectionTitle>Steps</SectionTitle>
       <List>
         {Object.entries(steps).map(([index, step]) => (
-          <li key={index}>{index} -  {step}</li>
+          <li key={index}>
+            {index} - {step}
+          </li>
         ))}
       </List>
-      </RecipeContainer>
-  )
-
+    </RecipeContainer>
+  );
 }
