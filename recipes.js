@@ -347,4 +347,26 @@ export const recipes = [
       9: "Bake for 20 min at 190C",
     },
   },
+  {
+    id: 18,
+    type: "savory",
+    title: "Massa de pastel",
+    ingredients: {
+      flour: "250 g",
+      water: "100 mL hot",
+      oil: "12 g",
+      salt: "5 g",
+    },
+    steps: {
+      1: "Put flour into a mixer",
+      2: "In another bowl mix water, salt, and oil",
+      3: "Wait until salt is dissolved",
+      4: "Add water mixture to flour",
+      5: "Mix until dough has a crumbling texture",
+      6: "Remove from mixer and knead dough come together",
+      7: "Wrap in plastic wrap and let rest (at least) overnight in fridge",
+      8: "Roll out dough and cut into wanted shape",
+      9: "Use filling of choice",
+    },
+  },
 ];
