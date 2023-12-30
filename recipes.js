@@ -317,7 +317,12 @@ export const recipes = [
       "baking powder": "7 g",
       "vanilla extract": "1 tsp",
     },
-    steps: { 1: "" },
+    steps: {
+      1: "Mix sugar and egg until smooth",
+      2: "Add milk and vanilla extract to the mixture",
+      3: "Add flour and baking powder to the mixture",
+      4: "Fry in oil until golden brown",
+    },
   },
   {
     id: 17,
