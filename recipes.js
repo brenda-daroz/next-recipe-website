@@ -374,4 +374,49 @@ export const recipes = [
       9: "Use filling of choice",
     },
   },
+  {
+    id: 19,
+    type: "sweet",
+    title: "Blueberry/strawberry pie",
+    ingredients: {
+      crust: {
+        flour: "160 g",
+        sugar: "12 g",
+        butter: "113 g (cold)",
+        salt: "2 g",
+        water: "45 g",
+      },
+      filling: {
+        blueberries: "200 g",
+        strawberries: "200 g",
+        sugar: "50 g",
+        cornstarch: "10 g",
+        lemon: "15 mL",
+      },
+      steps: {
+        1: "Mix flour, sugar, and salt",
+      },
+    },
+  },
+  {
+    id: 20,
+    type: "savory",
+    title: "Dadinho de tapioca",
+    ingredients: {
+      "leite integral": "500 mL",
+      "tapioca granulada": "250 g",
+      "queijo coalho": "250 g",
+      sal: "a gosto",
+      pimenta: "a gosto",
+    },
+    steps: {
+      1: "Em uma panela, adicione o leite e o sal e leve ao fogo até ferver;",
+      2: "Desligue o fogo e adicione a tapioca granulada e misture bem;",
+      3: "Adicione o queijo coalho e misture bem;",
+      4: "Ligue o fogo novamente e cozinhe por 3 minutos;",
+      5: "Transfira a massa para uma forma e espalhe bem;",
+      6: "Cubra com plastico filme e leve a geladeira por 2 horas;",
+      7: "Corte em cubos e frite em óleo quente até dourar.",
+    },
+  },
 ];
