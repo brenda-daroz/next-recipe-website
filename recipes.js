@@ -380,4 +380,16 @@ export const recipes = [
     },
     steps: {},
   },
+  {
+    id: 21,
+    type: "savory",
+    title: "Dadinho de tapioca",
+    ingredients: {
+      milk: "500 g",
+      "granulated tapioca starch": "250 g",
+      "halloumi cheese": "250 g",
+      "salt, black pepper": "to taste",
+    },
+    steps: {},
+  },
 ];
