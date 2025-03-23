@@ -7,7 +7,7 @@ export default function Page({ recipes }: { recipes: any[] }) {
     <>
       <Head>
         {/* HTML Meta Tags */}
-        <title>Brenda's Recipes</title>
+        <title>Brenda Recipes</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="description" content="Brenda's Favorite Recipes" />
