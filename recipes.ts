@@ -1,7 +1,17 @@
-export const recipes = [
-  {
+export type RecipeProps = {
+  id: number,
+  category: string,
+  title: string,
+  ingredients: Record<string, string | Record<string, string>>;
+  steps: Record<string, string | Record<string, string>>;
+};
+
+type RecipesProps = Array<RecipeProps>;
+
+export const recipes: RecipesProps = [
+  { 
     id: 1,
-    type: "sweet",
+    category: "sweet",
     title: "Basque Cheesecake",
     ingredients: {
       "cream cheese": "2 lbs",
@@ -18,11 +28,11 @@ export const recipes = [
   },
   {
     id: 2,
-    type: "savory",
-    title: "Cheese Bread (Pão de Queijo)",
+    category: "savory",
+    title: "Cheese Bread",
     ingredients: {
-      "sweet tapioca starch": "100g",
-      "sour tapioca starch": "150g",
+      "sweet manioc starch": "100g",
+      "sour manioc starch": "150g",
       cheese: "200g",
       milk: "50g",
       water: "50g",
@@ -32,7 +42,7 @@ export const recipes = [
     },
     steps: {
       1: "In a pan, mix milk, water, oil, and salt, then bring to a boil.",
-      2: "Add sweet and sour tapioca starch to a bowl and pour in the boiled mixture.",
+      2: "Add sweet and sour manioc starch to a bowl and pour in the boiled mixture.",
       3: "Mix well and let cool.",
       4: "Add the cheese and mix.",
       5: "Add eggs one at a time until incorporated into the dough.",
@@ -41,7 +51,7 @@ export const recipes = [
   },
   {
     id: 3,
-    type: "sweet",
+    category: "sweet",
     title: "Plain Cake",
     ingredients: {
       eggs: "2",
@@ -53,11 +63,15 @@ export const recipes = [
     },
     steps: {
       1: "Preheat oven to 400°F.",
+      2: "Mix eggs and sugar until creamy.",
+      3: "Add oil and milk, then mix well.",
+      4: "Sift flour and baking powder, then mix until smooth.",
+      5: "Bake for 40 minutes or until golden brown.",
     },
   },
   {
     id: 4,
-    type: "savory",
+    category: "savory",
     title: "Cheddar Sauce",
     ingredients: {
       butter: "57g",
@@ -66,11 +80,17 @@ export const recipes = [
       milk: "480mL",
       pasta: "225g",
     },
-    steps: { 1: "Add butter to a pan." },
+    steps: { 
+      1: "Add butter to a pan.",
+      2: "Add flour and whisk until golden.",
+      3: "Add milk and whisk until thickened.",
+      4: "Add cheddar and whisk until melted.",
+      5: "Serve over pasta.",
+    },
   },
   {
     id: 5,
-    type: "savory",
+    category: "savory",
     title: "Hummus",
     ingredients: {
       "cooked chickpeas": "250g",
@@ -90,7 +110,7 @@ export const recipes = [
   },
   {
     id: 6,
-    type: "savory",
+    category: "savory",
     title: "Potato Gnocchi",
     ingredients: {
       "Asterix potato": "500g",
@@ -110,7 +130,7 @@ export const recipes = [
   },
   {
     id: 7,
-    type: "savory",
+    category: "savory",
     title: "Queso Sauce",
     ingredients: {
       "processed cheese": "130g",
@@ -122,11 +142,14 @@ export const recipes = [
       salt: "to taste",
       cumin: "to taste",
     },
-    steps: { 1: "" },
+    steps: { 
+      1: "",
+      2: "",
+    },
   },
   {
     id: 8,
-    type: "savory",
+    category: "savory",
     title: "Pizza Dough",
     ingredients: {
       flour: "3 cups",
@@ -145,7 +168,7 @@ export const recipes = [
   },
   {
     id: 9,
-    type: "sweet",
+    category: "sweet",
     title: "Sweet Popcorn",
     ingredients: {
       popcorn: "70g",
@@ -154,11 +177,11 @@ export const recipes = [
       water: "10mL",
       oil: "15g",
     },
-    steps: { 1: "" },
+    steps: { },
   },
   {
     id: 10,
-    type: "sweet",
+    category: "sweet",
     title: "American Pancakes",
     ingredients: {
       flour: "195g",
@@ -179,7 +202,7 @@ export const recipes = [
   },
   {
     id: 11,
-    type: "sweet",
+    category: "sweet",
     title: "Banana Muffins",
     ingredients: {
       "unsalted butter": "50g",
@@ -196,7 +219,7 @@ export const recipes = [
   },
   {
     id: 12,
-    type: "sweet",
+    category: "sweet",
     title: "Banana Cake",
     ingredients: {
       sugar: "150g",
@@ -212,7 +235,7 @@ export const recipes = [
   },
   {
     id: 13,
-    type: "savory",
+    category: "savory",
     title: "Coxinha",
     ingredients: {
       flour: "160g",
@@ -232,7 +255,7 @@ export const recipes = [
   },
   {
     id: 14,
-    type: "savory",
+    category: "savory",
     title: "Hamburger Buns",
     ingredients: {
       tangzhong: {
@@ -252,14 +275,14 @@ export const recipes = [
     },
     steps: {
       1: "Cook tangzhong ingredients until thickened.",
-      2: "Combine with other ingredients except butter.",
-      3: "Knead and let rise.",
+      2: "Combine tangzhong with other ingredients except butter.",
+      3: "Knead for about 11 minutes in a mixer and let rise.",
       4: "Shape and bake at 180°C.",
     },
   },
   {
     id: 15,
-    type: "sweet",
+    category: "sweet",
     title: "NY Cheesecake",
     ingredients: {
       crust: {
@@ -269,16 +292,37 @@ export const recipes = [
       },
       filling: {
         "cream cheese": "450g",
-        sugar: "100g",
-        eggs: "2",
+        sugar: "163g",
+        salt: "1/2 tsp",
         vanilla: "1 tsp",
+        eggs: "2",
+        "heavy cream": "75g",
+        "sour cream": "130g",
+        lemon: "1 tbsp",
+        cornstarch: "1 tbsp",
+
       },
     },
-    steps: { 1: "" },
+    steps: {
+      "crust": {
+        1: "Crush graham crackers and mix with melted butter and sugar.",
+        2: "Press into a springform pan and bake for 10 minutes at 180°C.",
+      },
+      "filling": {
+      1: "Beat cream cheese until airy and creamy",
+      2: "Add to cream cheese sugar, salt and vanilla and beat until smooth",
+      3: "Whisk eggs until smooth", 
+      4: "Add eggs slowly to cream cheese mixture",
+      5: "Add heavy cream, sour cream and lemon juice, mix until smooth. Add cornstarch, mix again",
+      6: "Pour the mixture over the crust and tap the pan to remove air bubbles",
+      7: "Bake for 75 min at 162°C in a hot water bath",
+      8: "Let it cool on countertop and then refrigerate for at least 4 hours"
+      }
+    },
   },
   {
     id: 16,
-    type: "sweet",
+    category: "sweet",
     title: "Bolinho de chuva",
     ingredients: {
       flour: "140 g",
@@ -297,7 +341,7 @@ export const recipes = [
   },
   {
     id: 17,
-    type: "sweet",
+    category: "sweet",
     title: "Cookie",
     ingredients: {
       butter: "120 g",
@@ -325,7 +369,7 @@ export const recipes = [
   },
   {
     id: 18,
-    type: "savory",
+    category: "savory",
     title: "Pastel Dough",
     ingredients: {
       flour: "250 g",
@@ -347,7 +391,7 @@ export const recipes = [
   },
   {
     id: 19,
-    type: "sweet",
+    category: "sweet",
     title: "Carrot Cake",
     ingredients: {
       cake: {
@@ -365,11 +409,23 @@ export const recipes = [
         sugar: "6 tablespoons",
       },
     },
-    steps: {},
+    steps: {
+      "cake": {
+        1: "Mix sugar, carrots, oil, and eggs in a blender until smooth.",
+        2: "Add mixture to a bowl.",
+        3: "Sift flour and baking powder to mixture",
+        4: "Bake for 40 minutes at 180°C.",
+      },
+      "topping": {
+        1: "Mix all ingredients in a pan.",
+        2: "Cook until thickened.",
+        3: "Pour over the cake.",
+      },
+    },
   },
   {
     id: 20,
-    type: "savory",
+    category: "savory",
     title: "Focaccia",
     ingredients: {
       flour: "400 g",
@@ -378,11 +434,20 @@ export const recipes = [
       "olive oil": "15 g",
       yeast: "4 g",
     },
-    steps: {},
+    steps: {
+      1: "Mix flour, water, salt, olive oil and yeast in a bowl.",
+      2: "Knead for 10 minutes.",
+      3: "Let it rest for 30 minutes",
+      4: "Do 3 sets of stretch and folds every 30 minutes.",
+      5: "Transfer to an oiled container and let it rest overnight in the fridge.",
+      6: "Transfer to an oiled baking sheet and let it rise until doubled.",
+      7: "Add toppings of choice.",
+      8: "Bake at 230°C for 25 minutes or until golden .",
+    },
   },
   {
     id: 21,
-    type: "savory",
+    category: "savory",
     title: "Dadinho de tapioca",
     ingredients: {
       milk: "500 g",
@@ -390,6 +455,73 @@ export const recipes = [
       "halloumi cheese": "250 g",
       "salt, black pepper": "to taste",
     },
-    steps: {},
+    steps: {
+      1: "Heat the milk with salt and pepper until it simmers.",
+      2: "Add the tapioca starch and mix well.",
+      3: "Add the cheese and mix until melted.",
+      4: "Pour into a square mold and let it cool",
+      5: "Cut into small squares and fry until golden brown.",
+    },
   },
+  {
+    id: 22,
+    category: "sweet",
+    title: "Basque cheesecake",
+    ingredients: {
+      "cream cheese": "340 g",
+      sugar: "150 g",
+      eggs: "3",
+      "heavy cream": "60 g",
+      salt: "1/4 tsp",
+      vanilla: "1/2 tsp",
+    },  
+    steps: {
+      1: "Preheat oven to 200°C.",
+      2: "Mix cream cheese and sugar until smooth.",
+      3: "Whisk eggs and slowly add to the mixture.",
+      4: "Add heavy cream, salt, and vanilla.",
+      5: "Pour into a lined pan and bake for 50 minutes.",
+    },
+  },
+  {
+    id: 23,
+    category: "sweet",
+    title: "Pudim",
+    ingredients: {
+      "condensed milk": "2 cans",
+      milk: "400 g",
+      eggs: "2",
+      vanilla: "1 tsp",
+    },
+    steps: {
+      1: "In a blender add all ingredients and blend until smooth.",
+      2: "Caramelize a pan and pour the mixture.",
+      3: "Bake in a water bath for 90 minutes at 180°C.",
+      4: "Let it cool and refrigerate for at least 6 hours.",
+      5: "Unmold and serve.",
+    },
+  },
+  {
+    id: 24,
+    category: "savory",
+    title: "Kibe",
+    ingredients: {
+      "bulgur wheat": "500 g",
+      lime: "1",
+      onion: "1",
+      "olive oil": "1/2 cup",
+      mint: "1 cup",
+      parsley: "1 cup",
+      salt: "to taste",
+      "black pepper": "to taste",
+    },
+    steps: {
+      1: "Soak bulgur wheat in water for 1 hour.",
+      2: "Drain and squeeze out excess water.",
+      3: "In a blender, add bulgur, lime juice, onion, olive oil, mint, parsley, salt, and pepper.",
+      4: "Blend it all together.",
+      5: "Shape into football-shaped kibes, fill with cheese if wanted.",
+      6: "Fry until golden brown.",
+    },
+  }
 ];

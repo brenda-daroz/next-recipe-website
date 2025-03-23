@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
+import { recipes, RecipeProps } from "../../recipes";
 import Recipe from "../../components/Recipe";
-import { recipes } from "@/recipes";
+
 
 export const getStaticPaths = async () => {
   const paths = recipes.map((recipe) => ({
@@ -13,12 +14,12 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
   const recipe = recipes.find((recipe) => recipe.id.toString() === params.slug);
   return { props: { recipe } };
 };
 
-export default function Page({ recipe }) {
+export default function Page({ recipe }: { recipe: RecipeProps }) {
   const router = useRouter();
 
   return (

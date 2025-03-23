@@ -1,4 +1,4 @@
-import capitalizeFirstLetter from "../utils/capitalizeFirstLetter.js";
+import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 import styled from "styled-components";
 import Link from "next/link.js";
 
@@ -23,11 +23,21 @@ const RecipeLink = styled.div`
   }
 `;
 
-export default function BigUseClient({ recipes }) {
-  const savory = recipes.filter((recipe) => recipe.type === "savory");
-  const sweet = recipes.filter((recipe) => recipe.type === "sweet");
+interface Recipe {
+  id: string;
+  title: string;
+  category: "savory" | "sweet";
+}
 
-  const RecipeList = ({ recipes, category }) => (
+interface BigUseClientProps {
+  recipes: Recipe[];
+}
+
+export default function BigUseClient({ recipes }: BigUseClientProps) {
+  const savory = recipes.filter((recipe) => recipe.category === "savory");
+  const sweet = recipes.filter((recipe) => recipe.category === "sweet");
+
+  const RecipeList = ({ recipes, category }: { recipes: Recipe[]; category: string}) => (
     <ListContainer>
       <CategoryTitle>{capitalizeFirstLetter(category)}</CategoryTitle>
       <ul>
