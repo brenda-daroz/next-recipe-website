@@ -1,51 +1,54 @@
 import styled from "styled-components";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import { RecipeProps } from "../recipes";
 
 const RecipeContainer = styled.div`
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  max-width: 800px;
+  margin: 20px auto;
 `;
 
-const SectionTitle = styled.h3`
-  margin: 10px 0;
+const SectionTitle = styled.h2`
+  font-size: 1.4rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+`;
+
+const SubSectionTitle = styled.h4`
+  font-size: 1rem;
+  margin: 16px 0 8px;
+  color: #555;
 `;
 
 const List = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding-left: 20px;
+  margin-bottom: 30px;
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  list-style: none;
 `;
 
-const SubList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding-left: 20px;
-`;
-
-interface RecipeProps {
-  ingredients: Record<string, string | Record<string, string>>;
-  steps: Record<string, string | Record<string, string>>;
-}
-
-export default function Recipes({ ingredients, steps }: RecipeProps) {
-
-  console.log(steps)
+export default function Recipes( recipe: RecipeProps) {
   return (
     <RecipeContainer>
+      <h1>{capitalizeFirstLetter(recipe.title)}</h1>
       <SectionTitle>Ingredients</SectionTitle>
       <List>
-        {Object.entries(ingredients).map(([section, ingredients]) => (
+        {Object.entries(recipe.ingredients).map(([section, ingredients]) => (
           <ListItem key={section}>
             {typeof ingredients === "object" ? (
               <>
-                <div>{capitalizeFirstLetter(section)}:</div>
-                <SubList>
+                <SubSectionTitle>{capitalizeFirstLetter(section)}:</SubSectionTitle>
+                <List>
                   {Object.entries(ingredients).map(
                     ([subIngredient, subAmount]) => (
                       <ListItem key={subIngredient}>
@@ -53,7 +56,7 @@ export default function Recipes({ ingredients, steps }: RecipeProps) {
                       </ListItem>
                     )
                   )}
-                </SubList>
+                </List>
               </>
             ) : (
               `${capitalizeFirstLetter(section)} - ${ingredients}`
@@ -61,31 +64,18 @@ export default function Recipes({ ingredients, steps }: RecipeProps) {
           </ListItem>
         ))}
       </List>
-      {Object.keys(steps).length > 0 &&
+      {recipe.steps.length > 0 && (
         <>
           <SectionTitle>Steps</SectionTitle>
           <List>
-            {Object.entries(steps).map(([section, steps]) => (
-              <ListItem key={section}>
-                {typeof steps === "object" ? (
-                  <>
-                    <div>{capitalizeFirstLetter(section)}:</div>
-                    <SubList>
-                      {Object.entries(steps).map(([subIndex, subStep]) => (
-                        <ListItem key={subIndex}>
-                          {capitalizeFirstLetter(subIndex)} - {subStep}
-                        </ListItem>
-                      ))}
-                    </SubList>
-                  </>
-                ) : (
-                  `${section} - ${steps}`
-                )}
+            {recipe.steps.map((step, index) => (
+              <ListItem key={index}>
+                <strong>{index + 1}:</strong> {step}
               </ListItem>
             ))}
           </List>
         </>
-      }
+      )}
     </RecipeContainer>
 
   );

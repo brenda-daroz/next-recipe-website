@@ -3,7 +3,7 @@ export type RecipeProps = {
   category: string,
   title: string,
   ingredients: Record<string, string | Record<string, string>>;
-  steps: Record<string, string | Record<string, string>>;
+  steps: string[];
 };
 
 type RecipesProps = Array<RecipeProps>;
@@ -20,11 +20,11 @@ export const recipes: RecipesProps = [
       salt: "1/2 tsp",
       "vanilla extract": "1 tsp",
     },
-    steps: {
-      1: "Preheat oven to 400°F.",
-      2: "Mix cream cheese, sugar, eggs, salt, and vanilla extract.",
-      3: "Bake for 50 minutes.",
-    },
+    steps: [
+      "Preheat oven to 400°F.",
+      "Mix cream cheese, sugar, eggs, salt, and vanilla extract.",
+      "Bake for 50 minutes.",
+    ],
   },
   {
     id: 2,
@@ -40,14 +40,14 @@ export const recipes: RecipesProps = [
       salt: "8g",
       egg: "2",
     },
-    steps: {
-      1: "In a pan, mix milk, water, oil, and salt, then bring to a boil.",
-      2: "Add sweet and sour manioc starch to a bowl and pour in the boiled mixture.",
-      3: "Mix well and let cool.",
-      4: "Add the cheese and mix.",
-      5: "Add eggs one at a time until incorporated into the dough.",
-      6: "Form into balls and bake at 180°C for 20 minutes or until golden brown.",
-    },
+    steps: [
+      "In a pan, mix milk, water, oil, and salt, then bring to a boil.",
+      "Add sweet and sour manioc starch to a bowl and pour in the boiled mixture.",
+      "Mix well and let cool.",
+      "Add the cheese and mix.",
+      "Add eggs one at a time until incorporated into the dough.",
+      "Form into balls and bake at 180°C for 20 minutes or until golden brown.",
+    ],
   },
   {
     id: 3,
@@ -61,13 +61,13 @@ export const recipes: RecipesProps = [
       flour: "180g",
       "baking powder": "1 tsp",
     },
-    steps: {
-      1: "Preheat oven to 400°F.",
-      2: "Mix eggs and sugar until creamy.",
-      3: "Add oil and milk, then mix well.",
-      4: "Sift flour and baking powder, then mix until smooth.",
-      5: "Bake for 40 minutes or until golden brown.",
-    },
+    steps: [
+      "Preheat oven to 400°F.",
+      "Mix eggs and sugar until creamy.",
+      "Add oil and milk, then mix well.",
+      "Sift flour and baking powder, then mix until smooth.",
+      "Bake for 40 minutes or until golden brown.",
+    ],
   },
   {
     id: 4,
@@ -80,13 +80,13 @@ export const recipes: RecipesProps = [
       milk: "480mL",
       pasta: "225g",
     },
-    steps: { 
-      1: "Add butter to a pan.",
-      2: "Add flour and whisk until golden.",
-      3: "Add milk and whisk until thickened.",
-      4: "Add cheddar and whisk until melted.",
-      5: "Serve over pasta.",
-    },
+    steps: [
+      "Add butter to a pan.",
+      "Add flour and whisk until golden.",
+      "Add milk and whisk until thickened.",
+      "Add cheddar and whisk until melted.",
+      "Serve over pasta.",
+    ],
   },
   {
     id: 5,
@@ -101,12 +101,12 @@ export const recipes: RecipesProps = [
       cumin: "1/2 tsp",
       salt: "to taste",
     },
-    steps: {
-      1: "In a food processor, blend tahini, lemon juice, and garlic for 1 minute.",
-      2: "Add chickpeas, cumin, and salt, and process for 1 minute.",
-      3: "Add olive oil and process for 1 minute.",
-      4: "If too thick, gradually add water and process until desired texture.",
-    },
+    steps: [
+      "In a food processor, blend tahini, lemon juice, and garlic for 1 minute.",
+      "Add chickpeas, cumin, and salt, and process for 1 minute.",
+      "Add olive oil and process for 1 minute.",
+      "If too thick, gradually add water and process until desired texture.",
+    ],
   },
   {
     id: 6,
@@ -118,15 +118,15 @@ export const recipes: RecipesProps = [
       flour: "100g",
       "salt, black pepper, and nutmeg": "to taste",
     },
-    steps: {
-      1: "Add potatoes to cold water, bring to a boil, and cook until soft but firm.",
-      2: "Peel and mash potatoes.",
-      3: "Add parmesan, salt, black pepper, and nutmeg.",
-      4: "Gradually add flour and mix until a homogeneous dough forms.",
-      5: "Roll the dough into logs and cut into 2 cm pieces.",
-      6: "Cook in boiling water until they float to the surface.",
-      7: "Serve with a sauce of your choice.",
-    },
+    steps: [
+      "Add potatoes to cold water, bring to a boil, and cook until soft but firm.",
+      "Peel and mash potatoes.",
+      "Add parmesan, salt, black pepper, and nutmeg.",
+      "Gradually add flour and mix until a homogeneous dough forms.",
+      "Roll the dough into logs and cut into 2 cm pieces.",
+      "Cook in boiling water until they float to the surface.",
+      "Serve with a sauce of your choice.",
+    ],
   },
   {
     id: 7,
@@ -142,10 +142,10 @@ export const recipes: RecipesProps = [
       salt: "to taste",
       cumin: "to taste",
     },
-    steps: { 
-      1: "",
-      2: "",
-    },
+    steps: [
+      "",
+      "",
+    ],
   },
   {
     id: 8,
@@ -156,15 +156,15 @@ export const recipes: RecipesProps = [
       "dry yeast": "10g",
       salt: "1 tsp",
       "warm water": "1 1/4 cups",
-     " olive oil": "1/8 cup",
+      " olive oil": "1/8 cup",
     },
-    steps: {
-      1: "In a bowl, mix yeast and sugar with warm water and let it foam (5 minutes).",
-      2: "In a mixer bowl, combine flour and salt, then add yeast mixture and olive oil.",
-      3: "Knead with a dough hook for 15 minutes until smooth.",
-      4: "Place in an oiled bowl, cover, and let rise for 1 hour.",
-      5: "Divide into portions, roll out, and bake as desired.",
-    },
+    steps: [
+      "In a bowl, mix yeast and sugar with warm water and let it foam (5 minutes).",
+      "In a mixer bowl, combine flour and salt, then add yeast mixture and olive oil.",
+      "Knead with a dough hook for 15 minutes until smooth.",
+      "Place in an oiled bowl, cover, and let rise for 1 hour.",
+      "Divide into portions, roll out, and bake as desired.",
+    ],
   },
   {
     id: 9,
@@ -177,7 +177,7 @@ export const recipes: RecipesProps = [
       water: "10mL",
       oil: "15g",
     },
-    steps: { },
+    steps: [],
   },
   {
     id: 10,
@@ -193,12 +193,12 @@ export const recipes: RecipesProps = [
       "softened butter": "4 tbsp",
       vanilla: "1 tsp",
     },
-    steps: {
-      1: "Combine dry ingredients in a bowl.",
-      2: "Mix wet ingredients in another bowl.",
-      3: "Combine wet and dry mixtures until smooth.",
-      4: "Cook 1/4 cup batter in a greased pan until golden.",
-    },
+    steps: [
+      "Combine dry ingredients in a bowl.",
+      "Mix wet ingredients in another bowl.",
+      "Combine wet and dry mixtures until smooth.",
+      "Cook 1/4 cup batter in a greased pan until golden.",
+    ],
   },
   {
     id: 11,
@@ -215,7 +215,7 @@ export const recipes: RecipesProps = [
       "baking soda": "1/2 tsp",
       optional: "Chocolate chips",
     },
-    steps: { 1: "" },
+    steps: [""],
   },
   {
     id: 12,
@@ -231,7 +231,7 @@ export const recipes: RecipesProps = [
       flour: "300g",
       "baking powder": "1 tsp",
     },
-    steps: { 1: "" },
+    steps: [""],
   },
   {
     id: 13,
@@ -245,13 +245,13 @@ export const recipes: RecipesProps = [
       salt: "to taste",
       paprika: "to taste",
     },
-    steps: {
-      1: "In a pan, bring milk, butter, salt, and paprika to a boil.",
-      2: "Add mashed potato.",
-      3: "Add flour and mix until it forms a dough.",
-      4: "Knead and chill.",
-      5: "Shape and fill as desired.",
-    },
+    steps: [
+      "In a pan, bring milk, butter, salt, and paprika to a boil.",
+      "Add mashed potato.",
+      "Add flour and mix until it forms a dough.",
+      "Knead and chill.",
+      "Shape and fill as desired.",
+    ],
   },
   {
     id: 14,
@@ -273,12 +273,12 @@ export const recipes: RecipesProps = [
         butter: "45g",
       },
     },
-    steps: {
-      1: "Cook tangzhong ingredients until thickened.",
-      2: "Combine tangzhong with other ingredients except butter.",
-      3: "Knead for about 11 minutes in a mixer and let rise.",
-      4: "Shape and bake at 180°C.",
-    },
+    steps: [
+      "Cook tangzhong ingredients until thickened.",
+      "Combine tangzhong with other ingredients except butter.",
+      "Knead for about 11 minutes in a mixer and let rise.",
+      "Shape and bake at 180°C.",
+    ],
   },
   {
     id: 15,
@@ -300,25 +300,20 @@ export const recipes: RecipesProps = [
         "sour cream": "130g",
         lemon: "1 tbsp",
         cornstarch: "1 tbsp",
-
       },
     },
-    steps: {
-      "crust": {
-        1: "Crush graham crackers and mix with melted butter and sugar.",
-        2: "Press into a springform pan and bake for 10 minutes at 180°C.",
-      },
-      "filling": {
-      1: "Beat cream cheese until airy and creamy",
-      2: "Add to cream cheese sugar, salt and vanilla and beat until smooth",
-      3: "Whisk eggs until smooth", 
-      4: "Add eggs slowly to cream cheese mixture",
-      5: "Add heavy cream, sour cream and lemon juice, mix until smooth. Add cornstarch, mix again",
-      6: "Pour the mixture over the crust and tap the pan to remove air bubbles",
-      7: "Bake for 75 min at 162°C in a hot water bath",
-      8: "Let it cool on countertop and then refrigerate for at least 4 hours"
-      }
-    },
+    steps: [
+      "Crush graham crackers and mix with melted butter and sugar.",
+      "Press into a springform pan and bake for 10 minutes at 180°C.",
+      "Beat cream cheese until airy and creamy.",
+      "Add to cream cheese sugar, salt and vanilla and beat until smooth.",
+      "Whisk eggs until smooth.",
+      "Add eggs slowly to cream cheese mixture.",
+      "Add heavy cream, sour cream and lemon juice, mix until smooth. Add cornstarch, mix again.",
+      "Pour the mixture over the crust and tap the pan to remove air bubbles.",
+      "Bake for 75 min at 162°C in a hot water bath.",
+      "Let it cool on countertop and then refrigerate for at least 4 hours.",
+    ],
   },
   {
     id: 16,
@@ -332,12 +327,12 @@ export const recipes: RecipesProps = [
       "baking powder": "7 g",
       "vanilla extract": "1 tsp",
     },
-    steps: {
-      1: "Mix sugar and egg until smooth.",
-      2: "Add milk and vanilla extract to the mixture.",
-      3: "Add flour and baking powder to the mixture.",
-      4: "Fry in oil until golden brown.",
-    },
+    steps: [
+      "Mix sugar and egg until smooth.",
+      "Add milk and vanilla extract to the mixture.",
+      "Add flour and baking powder to the mixture.",
+      "Fry in oil until golden brown.",
+    ],
   },
   {
     id: 17,
@@ -355,17 +350,17 @@ export const recipes: RecipesProps = [
       "baking soda": "1/2 tsp",
       "chocolate chips": "200 g",
     },
-    steps: {
-      1: "Add butter into a pot and heat on medium heat.",
-      2: "Cook until butter is browned.",
-      3: "Cool the butter.",
-      4: "Mix butter and sugars.",
-      5: "Add egg and vanilla extract.",
-      6: "Mix flour, salt, baking powder, and baking soda.",
-      7: "Add chocolate chips.",
-      8: "Leave in the fridge for 30 minutes.",
-      9: "Bake for 20 minutes at 190°C.",
-    },
+    steps: [
+      "Add butter into a pot and heat on medium heat.",
+      "Cook until butter is browned.",
+      "Cool the butter.",
+      "Mix butter and sugars.",
+      "Add egg and vanilla extract.",
+      "Mix flour, salt, baking powder, and baking soda.",
+      "Add chocolate chips.",
+      "Leave in the fridge for 30 minutes.",
+      "Bake for 20 minutes at 190°C.",
+    ],
   },
   {
     id: 18,
@@ -377,17 +372,17 @@ export const recipes: RecipesProps = [
       oil: "12 g",
       salt: "5 g",
     },
-    steps: {
-      1: "Put flour into a mixer.",
-      2: "In another bowl, mix water, salt, and oil.",
-      3: "Wait until the salt is dissolved.",
-      4: "Add the water mixture to the flour.",
-      5: "Mix until the dough has a crumbling texture.",
-      6: "Remove from the mixer and knead until the dough comes together.",
-      7: "Wrap in plastic wrap and let it rest overnight in the fridge.",
-      8: "Roll out the dough and cut it into the desired shape.",
-      9: "Use a filling of choice.",
-    },
+    steps: [
+      "Put flour into a mixer.",
+      "In another bowl, mix water, salt, and oil.",
+      "Wait until the salt is dissolved.",
+      "Add the water mixture to the flour.",
+      "Mix until the dough has a crumbling texture.",
+      "Remove from the mixer and knead until the dough comes together.",
+      "Wrap in plastic wrap and let it rest overnight in the fridge.",
+      "Roll out the dough and cut it into the desired shape.",
+      "Use a filling of choice.",
+    ],
   },
   {
     id: 19,
@@ -409,19 +404,15 @@ export const recipes: RecipesProps = [
         sugar: "6 tablespoons",
       },
     },
-    steps: {
-      "cake": {
-        1: "Mix sugar, carrots, oil, and eggs in a blender until smooth.",
-        2: "Add mixture to a bowl.",
-        3: "Sift flour and baking powder to mixture",
-        4: "Bake for 40 minutes at 180°C.",
-      },
-      "topping": {
-        1: "Mix all ingredients in a pan.",
-        2: "Cook until thickened.",
-        3: "Pour over the cake.",
-      },
-    },
+    steps: [
+      "Mix sugar, carrots, oil, and eggs in a blender until smooth.",
+      "Add mixture to a bowl.",
+      "Sift flour and baking powder to mixture.",
+      "Bake for 40 minutes at 180°C.",
+      "Mix all topping ingredients in a pan.",
+      "Cook until thickened.",
+      "Pour over the cake.",
+    ],
   },
   {
     id: 20,
@@ -434,16 +425,16 @@ export const recipes: RecipesProps = [
       "olive oil": "15 g",
       yeast: "4 g",
     },
-    steps: {
-      1: "Mix flour, water, salt, olive oil and yeast in a bowl.",
-      2: "Knead for 10 minutes.",
-      3: "Let it rest for 30 minutes",
-      4: "Do 3 sets of stretch and folds every 30 minutes.",
-      5: "Transfer to an oiled container and let it rest overnight in the fridge.",
-      6: "Transfer to an oiled baking sheet and let it rise until doubled.",
-      7: "Add toppings of choice.",
-      8: "Bake at 230°C for 25 minutes or until golden .",
-    },
+    steps: [
+      "Mix flour, water, salt, olive oil and yeast in a bowl.",
+      "Knead for 10 minutes.",
+      "Let it rest for 30 minutes.",
+      "Do 3 sets of stretch and folds every 30 minutes.",
+      "Transfer to an oiled container and let it rest overnight in the fridge.",
+      "Transfer to an oiled baking sheet and let it rise until doubled.",
+      "Add toppings of choice.",
+      "Bake at 230°C for 25 minutes or until golden.",
+    ],
   },
   {
     id: 21,
@@ -455,13 +446,13 @@ export const recipes: RecipesProps = [
       "halloumi cheese": "250 g",
       "salt, black pepper": "to taste",
     },
-    steps: {
-      1: "Heat the milk with salt and pepper until it simmers.",
-      2: "Add the tapioca starch and mix well.",
-      3: "Add the cheese and mix until melted.",
-      4: "Pour into a square mold and let it cool",
-      5: "Cut into small squares and fry until golden brown.",
-    },
+    steps: [
+      "Heat the milk with salt and pepper until it simmers.",
+      "Add the tapioca starch and mix well.",
+      "Add the cheese and mix until melted.",
+      "Pour into a square mold and let it cool.",
+      "Cut into small squares and fry until golden brown.",
+    ],
   },
   {
     id: 22,
@@ -474,14 +465,14 @@ export const recipes: RecipesProps = [
       "heavy cream": "60 g",
       salt: "1/4 tsp",
       vanilla: "1/2 tsp",
-    },  
-    steps: {
-      1: "Preheat oven to 200°C.",
-      2: "Mix cream cheese and sugar until smooth.",
-      3: "Whisk eggs and slowly add to the mixture.",
-      4: "Add heavy cream, salt, and vanilla.",
-      5: "Pour into a lined pan and bake for 50 minutes.",
     },
+    steps: [
+      "Preheat oven to 200°C.",
+      "Mix cream cheese and sugar until smooth.",
+      "Whisk eggs and slowly add to the mixture.",
+      "Add heavy cream, salt, and vanilla.",
+      "Pour into a lined pan and bake for 50 minutes.",
+    ],
   },
   {
     id: 23,
@@ -493,13 +484,13 @@ export const recipes: RecipesProps = [
       eggs: "2",
       vanilla: "1 tsp",
     },
-    steps: {
-      1: "In a blender add all ingredients and blend until smooth.",
-      2: "Caramelize a pan and pour the mixture.",
-      3: "Bake in a water bath for 90 minutes at 180°C.",
-      4: "Let it cool and refrigerate for at least 6 hours.",
-      5: "Unmold and serve.",
-    },
+    steps: [
+      "In a blender add all ingredients and blend until smooth.",
+      "Caramelize a pan and pour the mixture.",
+      "Bake in a water bath for 90 minutes at 180°C.",
+      "Let it cool and refrigerate for at least 6 hours.",
+      "Unmold and serve.",
+    ],
   },
   {
     id: 24,
@@ -515,13 +506,48 @@ export const recipes: RecipesProps = [
       salt: "to taste",
       "black pepper": "to taste",
     },
-    steps: {
-      1: "Soak bulgur wheat in water for 1 hour.",
-      2: "Drain and squeeze out excess water.",
-      3: "In a blender, add bulgur, lime juice, onion, olive oil, mint, parsley, salt, and pepper.",
-      4: "Blend it all together.",
-      5: "Shape into football-shaped kibes, fill with cheese if wanted.",
-      6: "Fry until golden brown.",
+    steps: [
+      "Soak bulgur wheat in water for 1 hour.",
+      "Drain and squeeze out excess water.",
+      "In a blender, add bulgur, lime juice, onion, olive oil, mint, parsley, salt, and pepper.",
+      "Blend it all together.",
+      "Shape into football-shaped kibes, fill with cheese if wanted.",
+      "Fry until golden brown.",
+    ],
+  },
+  {
+    id: 25,
+    category: "sweet",
+    title: "Coconut cake",
+    ingredients: {
+      batter: {
+        eggs: "4",
+        sugar: "1 cup",
+        "vanilla essence": "1 tsp",
+        oil: "100 mL",
+        flour: "2 cups",
+        milk: "1 cup",
+        "baking powder": "1 tbsp",
+      },
+      topping: {
+        "coconut milk": "1 cup",
+        "condensed milk": "",
+        milk: "500 mL",
+        "coconut flakes": "1 cup",
+      },
     },
-  }
+    steps: [
+      "Mix eggs, sugar, and vanilla essence until it triples in volume.",
+      "Add oil and mix well.",
+      "Sieve 1 cup of flour, mix. Add half the milk and mix.",
+      "Sieve the other cup of flour, mix. Add the rest of the milk and mix.",
+      "Add baking powder and mix.",
+      "Pour into a greased pan and bake for 45 minutes at 180°C.",
+      "Let it cool and cut into squares.",
+      "In a bowl, mix coconut milk, condensed milk, and milk.",
+      "Soak the cake squares in the mixture.",
+      "Top with coconut flakes and wrap in aluminum foil.",
+      "Fridge for 8 hours.",
+    ],
+  },
 ];
