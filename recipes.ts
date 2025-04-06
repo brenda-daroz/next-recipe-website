@@ -1,16 +1,15 @@
-export type RecipeProps = {
-  id: number,
-  category: string,
-  title: string,
+export interface Recipe {
+  id: string;
+  title: string;
+  category: "savory" | "sweet";
   ingredients: Record<string, string | Record<string, string>>;
   steps: string[];
-};
+}
 
-type RecipesProps = Array<RecipeProps>;
 
-export const recipes: RecipesProps = [
+export const recipes: Recipe[] = [
   { 
-    id: 1,
+    id: "1",
     category: "sweet",
     title: "Basque Cheesecake",
     ingredients: {
@@ -27,7 +26,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 2,
+    id: "2",
     category: "savory",
     title: "Cheese Bread",
     ingredients: {
@@ -50,7 +49,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 3,
+    id: "3",
     category: "sweet",
     title: "Plain Cake",
     ingredients: {
@@ -70,7 +69,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 4,
+    id: "4",
     category: "savory",
     title: "Cheddar Sauce",
     ingredients: {
@@ -89,7 +88,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 5,
+    id: "5",
     category: "savory",
     title: "Hummus",
     ingredients: {
@@ -109,7 +108,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 6,
+    id: "6",
     category: "savory",
     title: "Potato Gnocchi",
     ingredients: {
@@ -129,7 +128,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 7,
+    id: "7",
     category: "savory",
     title: "Queso Sauce",
     ingredients: {
@@ -142,13 +141,10 @@ export const recipes: RecipesProps = [
       salt: "to taste",
       cumin: "to taste",
     },
-    steps: [
-      "",
-      "",
-    ],
+    steps: [],
   },
   {
-    id: 8,
+    id: "8",
     category: "savory",
     title: "Pizza Dough",
     ingredients: {
@@ -167,7 +163,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 9,
+    id: "9",
     category: "sweet",
     title: "Sweet Popcorn",
     ingredients: {
@@ -180,7 +176,7 @@ export const recipes: RecipesProps = [
     steps: [],
   },
   {
-    id: 10,
+    id: "10",
     category: "sweet",
     title: "American Pancakes",
     ingredients: {
@@ -201,7 +197,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 11,
+    id: "11",
     category: "sweet",
     title: "Banana Muffins",
     ingredients: {
@@ -215,10 +211,10 @@ export const recipes: RecipesProps = [
       "baking soda": "1/2 tsp",
       optional: "Chocolate chips",
     },
-    steps: [""],
+    steps: [],
   },
   {
-    id: 12,
+    id: "12",
     category: "sweet",
     title: "Banana Cake",
     ingredients: {
@@ -231,10 +227,10 @@ export const recipes: RecipesProps = [
       flour: "300g",
       "baking powder": "1 tsp",
     },
-    steps: [""],
+    steps: [],
   },
   {
-    id: 13,
+    id: "13",
     category: "savory",
     title: "Coxinha",
     ingredients: {
@@ -254,7 +250,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 14,
+    id: "14",
     category: "savory",
     title: "Hamburger Buns",
     ingredients: {
@@ -281,7 +277,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 15,
+    id: "15",
     category: "sweet",
     title: "NY Cheesecake",
     ingredients: {
@@ -316,7 +312,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 16,
+    id: "16",
     category: "sweet",
     title: "Bolinho de chuva",
     ingredients: {
@@ -335,7 +331,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 17,
+    id: "17",
     category: "sweet",
     title: "Cookie",
     ingredients: {
@@ -363,7 +359,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 18,
+    id: "18",
     category: "savory",
     title: "Pastel Dough",
     ingredients: {
@@ -385,7 +381,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 19,
+    id: "19",
     category: "sweet",
     title: "Carrot Cake",
     ingredients: {
@@ -415,7 +411,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 20,
+    id: "20",
     category: "savory",
     title: "Focaccia",
     ingredients: {
@@ -437,7 +433,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 21,
+    id: "21",
     category: "savory",
     title: "Dadinho de tapioca",
     ingredients: {
@@ -455,7 +451,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 22,
+    id: "22",
     category: "sweet",
     title: "Basque cheesecake",
     ingredients: {
@@ -475,7 +471,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 23,
+    id: "23",
     category: "sweet",
     title: "Pudim",
     ingredients: {
@@ -493,7 +489,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 24,
+    id: "24",
     category: "savory",
     title: "Kibe",
     ingredients: {
@@ -516,7 +512,7 @@ export const recipes: RecipesProps = [
     ],
   },
   {
-    id: 25,
+    id: "25",
     category: "sweet",
     title: "Coconut cake",
     ingredients: {

@@ -1,6 +1,7 @@
+'use client';
 import styled from "styled-components";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
-import { RecipeProps } from "../recipes";
+import { Recipe } from "../recipes";
 
 const RecipeContainer = styled.div`
   background-color: #fff;
@@ -37,7 +38,7 @@ const ListItem = styled.li`
   list-style: none;
 `;
 
-export default function Recipes( recipe: RecipeProps) {
+export default function Recipes( recipe: Recipe) {
   return (
     <RecipeContainer>
       <h1>{capitalizeFirstLetter(recipe.title)}</h1>

@@ -2,7 +2,7 @@ import BigUseClient from "../components/BigUseClient";
 import { recipes } from "../recipes";
 import Head from "next/head";
 
-export default function Page({ recipes }: { recipes: any[] }) {
+export default function Page() {
   return (
     <>
       <Head>
@@ -17,7 +17,3 @@ export default function Page({ recipes }: { recipes: any[] }) {
     </>
   );
 }
-
-export const getStaticProps = () => {
-  return { props: { recipes: recipes } };
-};
