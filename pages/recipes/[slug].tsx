@@ -28,8 +28,7 @@ export default function Page({ recipe }: { recipe: RecipeProps }) {
         Click here to go back
       </button>
       <div className="container">
-        <h1> {recipe.title} </h1>
-        <Recipe ingredients={recipe?.ingredients} steps={recipe?.steps} />
+        <Recipe {...recipe} />
       </div>
     </>
   );
