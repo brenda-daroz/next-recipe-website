@@ -3,7 +3,7 @@ import Recipe from "../../../components/Recipe";
 
 export const generateStaticParams = async () => {
     const paths = recipes.map((recipe) => ({
-        params: { slug: recipe.id },
+        slug: recipe.id,
     }))
     return paths;
 }
