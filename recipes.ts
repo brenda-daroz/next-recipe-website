@@ -546,4 +546,27 @@ export const recipes: Recipe[] = [
       "Fridge for 8 hours.",
     ],
   },
+  {
+    id: "26",
+    category: "savory",
+    title: "Pizza",
+    ingredients: {
+      "pizza flour": "550 g",
+      water: "375 g",
+      yeast: "80 g of levain or 1 g of dry yeast",
+      salt: "15 g",
+      "olive oil": "15 g",
+    },
+    steps: [
+      "Mix water, yeast, salt and flour in a bowl.",
+      "Knead for until it comes together.",
+      "Add olive oil and knead for another few minutes until mixed.",
+      "Place in fridge overnight.",
+      "Divide into equal portions, shape into balls and store in separate containers.",
+      "Place in fridge for 24-48 hours.",
+      "Remove from fridge and let it double in size before using the dough.",
+      "Shape the dough into a pizza shape.",
+      "Add toppings of choice.",
+    ],
+  }
 ];

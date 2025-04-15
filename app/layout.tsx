@@ -1,3 +1,4 @@
+import React from 'react'
 import StyledComponentsRegistry from "../lib/registry"
 
 export const metadata = {
