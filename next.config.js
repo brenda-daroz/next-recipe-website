@@ -4,14 +4,9 @@ const pathPrefix = process.env.NODE_ENV === 'production'
   ? '/next-recipe-website'
   : '';
 
-const nextConfig = {
+module.exports = {
   basePath: pathPrefix,
   output: "export",
-
-}
-
-module.exports = {
-  nextConfig,
   compiler: {
     styledComponents: true,
   }
