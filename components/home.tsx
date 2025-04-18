@@ -2,7 +2,7 @@
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 import styled from "styled-components";
 import Link from "next/link.js";
-import { Recipe } from "../recipes";
+import { RecipeMinimal } from "../app/db/recipes";
 
 const ListContainer = styled.div`
   margin-top: 20px;
@@ -25,11 +25,7 @@ const RecipeLink = styled.div`
   }
 `;
 
-interface RecipeListProps {
-  recipes: Recipe[];
-}
-
-function RecipeList ({ recipes, category }: { recipes: Recipe[]; category: string}) {
+function RecipeList ({ recipes, category }: { recipes: RecipeMinimal[]; category: string}) {
   return (
   <ListContainer>
     <CategoryTitle>{capitalizeFirstLetter(category)}</CategoryTitle>
@@ -52,7 +48,7 @@ function RecipeList ({ recipes, category }: { recipes: Recipe[]; category: strin
     )
 }
 
-export default function Index({ recipes }: RecipeListProps) {
+export default function Index({ recipes }: { recipes: RecipeMinimal[] }) {
 
   const savory = recipes.filter((recipe) => recipe.category === "savory");
   const sweet = recipes.filter((recipe) => recipe.category === "sweet");
