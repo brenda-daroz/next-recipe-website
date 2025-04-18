@@ -1,7 +1,16 @@
 'use client';
 import styled from "styled-components";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
-import { Recipe } from "../recipes";
+
+export interface Recipe {
+  id: string;
+  title: string;
+  category: "savory" | "sweet";
+  ingredients: string;
+  instructions: string[];
+  created_at?: string;
+  updated_at?: string;
+}
 
 const RecipeContainer = styled.div`
   background-color: #fff;
@@ -38,19 +47,21 @@ const ListItem = styled.li`
   list-style: none;
 `;
 
-export default function Recipes( recipe: Recipe) {
+export default function Recipe( recipe: Recipe) {  
+  const parsedIngredients = JSON.parse(recipe.ingredients);
+  console
   return (
     <RecipeContainer>
       <h1>{capitalizeFirstLetter(recipe.title)}</h1>
       <SectionTitle>Ingredients</SectionTitle>
       <List>
-        {Object.entries(recipe.ingredients).map(([section, ingredients]) => (
+        {Object.entries(parsedIngredients).map(([section, ingredients]) => (
           <ListItem key={section}>
             {typeof ingredients === "object" ? (
               <>
                 <SubSectionTitle>{capitalizeFirstLetter(section)}:</SubSectionTitle>
                 <List>
-                  {Object.entries(ingredients).map(
+                  {ingredients && Object.entries(ingredients).map(
                     ([subIngredient, subAmount]) => (
                       <ListItem key={subIngredient}>
                         {capitalizeFirstLetter(subIngredient)} - {subAmount}
@@ -65,11 +76,11 @@ export default function Recipes( recipe: Recipe) {
           </ListItem>
         ))}
       </List>
-      {recipe.steps.length > 0 && (
+      {recipe.instructions.length > 0 && (
         <>
           <SectionTitle>Steps</SectionTitle>
           <List>
-            {recipe.steps.map((step, index) => (
+            {recipe.instructions.map((step, index) => (
               <ListItem key={index}>
                 <strong>{index + 1}:</strong> {step}
               </ListItem>

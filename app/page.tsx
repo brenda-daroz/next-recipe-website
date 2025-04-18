@@ -1,9 +1,9 @@
-import BigUseClient from "../components/BigUseClient";
-import TestDB from "../components/TestDB";
-import { recipes } from "../recipes";
+import Index from "../components/home";
 import Head from "next/head";
+import { getHomePageData } from "./db/recipes";
 
-export default function Page() {
+export default async function Page() {
+  const recipes = await getHomePageData();
   return (
     <>
       <Head>
@@ -14,8 +14,7 @@ export default function Page() {
         <meta name="description" content="Brenda's Favorite Recipes" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <TestDB />
-      <BigUseClient recipes={recipes} />
+      <Index recipes={recipes} />
     </>
   );
 }

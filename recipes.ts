@@ -3,7 +3,9 @@ export interface Recipe {
   title: string;
   category: "savory" | "sweet";
   ingredients: Record<string, string | Record<string, string>>;
-  steps: string[];
+  instructions: string[];
+  created_at?: string;
+  updated_at?: string;
 }
 
 
@@ -19,7 +21,7 @@ export const recipes: Recipe[] = [
       salt: "1/2 tsp",
       "vanilla extract": "1 tsp",
     },
-    steps: [
+    instructions: [
       "Preheat oven to 400°F.",
       "Mix cream cheese, sugar, eggs, salt, and vanilla extract.",
       "Bake for 50 minutes.",
@@ -39,7 +41,7 @@ export const recipes: Recipe[] = [
       salt: "8g",
       egg: "2",
     },
-    steps: [
+    instructions: [
       "In a pan, mix milk, water, oil, and salt, then bring to a boil.",
       "Add sweet and sour manioc starch to a bowl and pour in the boiled mixture.",
       "Mix well and let cool.",
@@ -60,7 +62,7 @@ export const recipes: Recipe[] = [
       flour: "180g",
       "baking powder": "1 tsp",
     },
-    steps: [
+    instructions: [
       "Preheat oven to 400°F.",
       "Mix eggs and sugar until creamy.",
       "Add oil and milk, then mix well.",
@@ -79,7 +81,7 @@ export const recipes: Recipe[] = [
       milk: "480mL",
       pasta: "225g",
     },
-    steps: [
+    instructions: [
       "Add butter to a pan.",
       "Add flour and whisk until golden.",
       "Add milk and whisk until thickened.",
@@ -100,7 +102,7 @@ export const recipes: Recipe[] = [
       cumin: "1/2 tsp",
       salt: "to taste",
     },
-    steps: [
+    instructions: [
       "In a food processor, blend tahini, lemon juice, and garlic for 1 minute.",
       "Add chickpeas, cumin, and salt, and process for 1 minute.",
       "Add olive oil and process for 1 minute.",
@@ -117,7 +119,7 @@ export const recipes: Recipe[] = [
       flour: "100g",
       "salt, black pepper, and nutmeg": "to taste",
     },
-    steps: [
+    instructions: [
       "Add potatoes to cold water, bring to a boil, and cook until soft but firm.",
       "Peel and mash potatoes.",
       "Add parmesan, salt, black pepper, and nutmeg.",
@@ -141,7 +143,7 @@ export const recipes: Recipe[] = [
       salt: "to taste",
       cumin: "to taste",
     },
-    steps: [],
+    instructions: [],
   },
   {
     id: "8",
@@ -154,7 +156,7 @@ export const recipes: Recipe[] = [
       "warm water": "1 1/4 cups",
       " olive oil": "1/8 cup",
     },
-    steps: [
+    instructions: [
       "In a bowl, mix yeast and sugar with warm water and let it foam (5 minutes).",
       "In a mixer bowl, combine flour and salt, then add yeast mixture and olive oil.",
       "Knead with a dough hook for 15 minutes until smooth.",
@@ -173,7 +175,7 @@ export const recipes: Recipe[] = [
       water: "10mL",
       oil: "15g",
     },
-    steps: [],
+    instructions: [],
   },
   {
     id: "10",
@@ -189,7 +191,7 @@ export const recipes: Recipe[] = [
       "softened butter": "4 tbsp",
       vanilla: "1 tsp",
     },
-    steps: [
+    instructions: [
       "Combine dry ingredients in a bowl.",
       "Mix wet ingredients in another bowl.",
       "Combine wet and dry mixtures until smooth.",
@@ -211,7 +213,7 @@ export const recipes: Recipe[] = [
       "baking soda": "1/2 tsp",
       optional: "Chocolate chips",
     },
-    steps: [],
+    instructions: [],
   },
   {
     id: "12",
@@ -227,7 +229,7 @@ export const recipes: Recipe[] = [
       flour: "300g",
       "baking powder": "1 tsp",
     },
-    steps: [],
+    instructions: [],
   },
   {
     id: "13",
@@ -241,7 +243,7 @@ export const recipes: Recipe[] = [
       salt: "to taste",
       paprika: "to taste",
     },
-    steps: [
+    instructions: [
       "In a pan, bring milk, butter, salt, and paprika to a boil.",
       "Add mashed potato.",
       "Add flour and mix until it forms a dough.",
@@ -269,7 +271,7 @@ export const recipes: Recipe[] = [
         butter: "45g",
       },
     },
-    steps: [
+    instructions: [
       "Cook tangzhong ingredients until thickened.",
       "Combine tangzhong with other ingredients except butter.",
       "Knead for about 11 minutes in a mixer and let rise.",
@@ -298,7 +300,7 @@ export const recipes: Recipe[] = [
         cornstarch: "1 tbsp",
       },
     },
-    steps: [
+    instructions: [
       "Crush graham crackers and mix with melted butter and sugar.",
       "Press into a springform pan and bake for 10 minutes at 180°C.",
       "Beat cream cheese until airy and creamy.",
@@ -323,7 +325,7 @@ export const recipes: Recipe[] = [
       "baking powder": "7 g",
       "vanilla extract": "1 tsp",
     },
-    steps: [
+    instructions: [
       "Mix sugar and egg until smooth.",
       "Add milk and vanilla extract to the mixture.",
       "Add flour and baking powder to the mixture.",
@@ -346,7 +348,7 @@ export const recipes: Recipe[] = [
       "baking soda": "1/2 tsp",
       "chocolate chips": "200 g",
     },
-    steps: [
+    instructions: [
       "Add butter into a pot and heat on medium heat.",
       "Cook until butter is browned.",
       "Cool the butter.",
@@ -368,7 +370,7 @@ export const recipes: Recipe[] = [
       oil: "12 g",
       salt: "5 g",
     },
-    steps: [
+    instructions: [
       "Put flour into a mixer.",
       "In another bowl, mix water, salt, and oil.",
       "Wait until the salt is dissolved.",
@@ -400,7 +402,7 @@ export const recipes: Recipe[] = [
         sugar: "6 tablespoons",
       },
     },
-    steps: [
+    instructions: [
       "Mix sugar, carrots, oil, and eggs in a blender until smooth.",
       "Add mixture to a bowl.",
       "Sift flour and baking powder to mixture.",
@@ -421,7 +423,7 @@ export const recipes: Recipe[] = [
       "olive oil": "15 g",
       yeast: "4 g",
     },
-    steps: [
+    instructions: [
       "Mix flour, water, salt, olive oil and yeast in a bowl.",
       "Knead for 10 minutes.",
       "Let it rest for 30 minutes.",
@@ -442,7 +444,7 @@ export const recipes: Recipe[] = [
       "halloumi cheese": "250 g",
       "salt, black pepper": "to taste",
     },
-    steps: [
+    instructions: [
       "Heat the milk with salt and pepper until it simmers.",
       "Add the tapioca starch and mix well.",
       "Add the cheese and mix until melted.",
@@ -462,7 +464,7 @@ export const recipes: Recipe[] = [
       salt: "1/4 tsp",
       vanilla: "1/2 tsp",
     },
-    steps: [
+    instructions: [
       "Preheat oven to 200°C.",
       "Mix cream cheese and sugar until smooth.",
       "Whisk eggs and slowly add to the mixture.",
@@ -480,7 +482,7 @@ export const recipes: Recipe[] = [
       eggs: "2",
       vanilla: "1 tsp",
     },
-    steps: [
+    instructions: [
       "In a blender add all ingredients and blend until smooth.",
       "Caramelize a pan and pour the mixture.",
       "Bake in a water bath for 90 minutes at 180°C.",
@@ -502,7 +504,7 @@ export const recipes: Recipe[] = [
       salt: "to taste",
       "black pepper": "to taste",
     },
-    steps: [
+    instructions: [
       "Soak bulgur wheat in water for 1 hour.",
       "Drain and squeeze out excess water.",
       "In a blender, add bulgur, lime juice, onion, olive oil, mint, parsley, salt, and pepper.",
@@ -532,7 +534,7 @@ export const recipes: Recipe[] = [
         "coconut flakes": "1 cup",
       },
     },
-    steps: [
+    instructions: [
       "Mix eggs, sugar, and vanilla essence until it triples in volume.",
       "Add oil and mix well.",
       "Sieve 1 cup of flour, mix. Add half the milk and mix.",
@@ -557,7 +559,7 @@ export const recipes: Recipe[] = [
       salt: "15 g",
       "olive oil": "15 g",
     },
-    steps: [
+    instructions: [
       "Mix water, yeast, salt and flour in a bowl.",
       "Knead for until it comes together.",
       "Add olive oil and knead for another few minutes until mixed.",

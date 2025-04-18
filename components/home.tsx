@@ -25,7 +25,7 @@ const RecipeLink = styled.div`
   }
 `;
 
-interface BigUseClientProps {
+interface RecipeListProps {
   recipes: Recipe[];
 }
 
@@ -52,7 +52,8 @@ function RecipeList ({ recipes, category }: { recipes: Recipe[]; category: strin
     )
 }
 
-export default function BigUseClient({ recipes }: BigUseClientProps) {
+export default function Index({ recipes }: RecipeListProps) {
+
   const savory = recipes.filter((recipe) => recipe.category === "savory");
   const sweet = recipes.filter((recipe) => recipe.category === "sweet");
 
