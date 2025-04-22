@@ -570,5 +570,36 @@ export const recipes: Recipe[] = [
       "Shape the dough into a pizza shape.",
       "Add toppings of choice.",
     ],
+  },
+  {
+    id: "27",
+    category: "sweet",
+    title: "Chocolate cake",
+    ingredients: {
+      batter: {
+        eggs: "3",
+        milk: "200 mL",
+        oil: "80 g",
+        sugar: "230 g",
+        "cocoa powder 50%": "3 tbsps",
+        flour: "320 g",
+        "baking powder": "1 tbsp",
+        "baking soda": "1 tsp",
+      },
+      "filling/topping": {
+        "condensed milk": "1 can",
+        "heavy cream": "1 can",
+        "50% chocolate bar": "100 g",
+        butter: "1/2 tbsp",
+        "cocoa powder 50%": "1 tbsp"
+      },
+      "syrup": {
+        milk: "500 mL",
+        sugar: "1/2 cup",
+        "cocoa powder 50%": "4 tbsp",
+        butter: "1 tbsp",
+      }
+    },
+    instructions: []
   }
 ];

@@ -5,6 +5,16 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+    "@components/*": ["components/*"],
+    "@ui/*": ["components/ui/*"],
+    "@lib/*": ["lib/*"],
+    "@hooks/*": ["hooks/*"]
+    },
     "target": "es5",
     "module": "esnext",
     "strict": true,

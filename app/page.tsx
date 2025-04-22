@@ -1,4 +1,4 @@
-import Index from "../components/home";
+import Index from "./ui/home";
 import Head from "next/head";
 import { getHomePageData } from "./db/recipes";
 
@@ -13,7 +13,7 @@ export default async function Page() {
         <meta charSet="utf-8" />
         <meta name="description" content="Brenda's Favorite Recipes" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      </ Head>
       <Index recipes={recipes} />
     </>
   );

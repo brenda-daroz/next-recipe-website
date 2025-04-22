@@ -1,8 +1,8 @@
 'use client';
-import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import styled from "styled-components";
 import Link from "next/link.js";
-import { RecipeMinimal } from "../app/db/recipes";
+import { RecipeMinimal } from "../db/recipes";
 
 const ListContainer = styled.div`
   margin-top: 20px;
@@ -28,7 +28,7 @@ const RecipeLink = styled.div`
 function RecipeList ({ recipes, category }: { recipes: RecipeMinimal[]; category: string}) {
   return (
   <ListContainer>
-    <CategoryTitle>{capitalizeFirstLetter(category)}</CategoryTitle>
+    <div className="text-3xl font-bold underline">{capitalizeFirstLetter(category)}</div>
     <ul>
       {recipes.map((recipe) => (
         <li key={recipe.id}>
@@ -55,10 +55,9 @@ export default function Index({ recipes }: { recipes: RecipeMinimal[] }) {
 
 
   return (
-    <>
-      <h1>Recipes</h1>
+    <div className="p-4">
       <RecipeList recipes={savory} category="savory" />
       <RecipeList recipes={sweet} category="sweet" />
-    </>
+    </div>
   );
 }
