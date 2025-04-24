@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { PersonIcon, HomeIcon } from "@radix-ui/react-icons"
+import { getSessionFromCookies } from "../lib/session";
 
 
-export function Header() {
+export async function Header() {
+  const session = await getSessionFromCookies()
+  console.log('session', session)
+  const router = session?.userId ? '/admin' : '/login'
   return (
-    <header className="h-18 p-4">
+    <header className="h-10">
       <nav className="flex items-center justify-between w-full">
 
         <Link href="/" className="text-2xl font-bold">
@@ -14,7 +18,7 @@ export function Header() {
           <Link href="/" className="ml-4">
             <HomeIcon className="cursor-pointer" />
           </Link>
-          <Link href="/login">
+          <Link href={router}>
             <PersonIcon className="cursor-pointer" />
           </Link>
         </div>

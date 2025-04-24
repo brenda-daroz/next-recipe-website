@@ -8,11 +8,6 @@ const ListContainer = styled.div`
   margin-top: 20px;
 `;
 
-const CategoryTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-`;
-
 const RecipeLink = styled.div`
   display: inline-block;
   font-size: 1.2rem;
@@ -55,7 +50,7 @@ export default function Index({ recipes }: { recipes: RecipeMinimal[] }) {
 
 
   return (
-    <div className="p-4">
+    <div>
       <RecipeList recipes={savory} category="savory" />
       <RecipeList recipes={sweet} category="sweet" />
     </div>

@@ -1,6 +1,6 @@
 'use server'
-// import { z } from 'zod'
 import { createUser, getUserByEmail } from '../db/users';
+import { createSession } from '../lib/session';
 const bcrypt = require('bcrypt');
 
 
@@ -22,7 +22,6 @@ export async function signup(data: {name: string, email: string, password: strin
 }
 
 export async function signin(data: { email: string, password: string }) {
-    console.log('signin')
     const { email, password } = data
     const user = await getUserByEmail(email)
     if (!user) {
@@ -37,9 +36,13 @@ export async function signin(data: { email: string, password: string }) {
         }
     }
     if (isValid) {
+        await createSession(user.id, user.name)
         return {
             message: 'User logged in successfully',
-            redirect: '/',
+            user: {
+                name: user.name,
+                email: user.email,
+            }
         }
     }
 }
