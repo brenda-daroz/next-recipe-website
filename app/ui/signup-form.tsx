@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { signup } from "../actions/auth";
 
@@ -9,10 +8,11 @@ function SignupForm() {
 
   const handleSubmit = async () => {
     console.log("handlesubmit", name, email, password);
-   signup({
+    signup({
       name,
       email,
-      password,});
+      password,
+    });
   };
 
   return (

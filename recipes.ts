@@ -8,9 +8,8 @@ export interface Recipe {
   updated_at?: string;
 }
 
-
 export const recipes: Recipe[] = [
-  { 
+  {
     id: "1",
     category: "sweet",
     title: "Basque Cheesecake",
@@ -591,15 +590,15 @@ export const recipes: Recipe[] = [
         "heavy cream": "1 can",
         "50% chocolate bar": "100 g",
         butter: "1/2 tbsp",
-        "cocoa powder 50%": "1 tbsp"
+        "cocoa powder 50%": "1 tbsp",
       },
-      "syrup": {
+      syrup: {
         milk: "500 mL",
         sugar: "1/2 cup",
         "cocoa powder 50%": "4 tbsp",
         butter: "1 tbsp",
-      }
+      },
     },
-    instructions: []
-  }
+    instructions: [],
+  },
 ];

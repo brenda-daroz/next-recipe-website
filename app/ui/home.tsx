@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import styled from "styled-components";
 import Link from "next/link.js";
@@ -20,34 +20,40 @@ const RecipeLink = styled.div`
   }
 `;
 
-function RecipeList ({ recipes, category }: { recipes: RecipeMinimal[]; category: string}) {
+function RecipeList({
+  recipes,
+  category,
+}: {
+  recipes: RecipeMinimal[];
+  category: string;
+}) {
   return (
-  <ListContainer>
-    <div className="text-3xl font-bold underline">{capitalizeFirstLetter(category)}</div>
-    <ul>
-      {recipes.map((recipe) => (
-        <li key={recipe.id}>
-          <Link
-            href={{
-              pathname: `/recipes/${encodeURIComponent(recipe.id)}`,
-              query: { object: JSON.stringify(recipe) },
-            }}
-            as={`/recipes/${recipe.id}`}
-          >
-            <RecipeLink>{capitalizeFirstLetter(recipe.title)}</RecipeLink>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </ListContainer>
-    )
+    <ListContainer>
+      <div className="text-3xl font-bold underline">
+        {capitalizeFirstLetter(category)}
+      </div>
+      <ul>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>
+            <Link
+              href={{
+                pathname: `/recipes/${encodeURIComponent(recipe.id)}`,
+                query: { object: JSON.stringify(recipe) },
+              }}
+              as={`/recipes/${recipe.id}`}
+            >
+              <RecipeLink>{capitalizeFirstLetter(recipe.title)}</RecipeLink>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </ListContainer>
+  );
 }
 
 export default function Index({ recipes }: { recipes: RecipeMinimal[] }) {
-
   const savory = recipes.filter((recipe) => recipe.category === "savory");
   const sweet = recipes.filter((recipe) => recipe.category === "sweet");
-
 
   return (
     <div>
