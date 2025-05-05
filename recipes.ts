@@ -1,4 +1,4 @@
-export interface Recipe {
+export interface RecipeJson {
   id: string;
   title: string;
   category: "savory" | "sweet";
@@ -8,7 +8,7 @@ export interface Recipe {
   updated_at?: string;
 }
 
-export const recipes: Recipe[] = [
+export const recipes: RecipeJson[] = [
   {
     id: "1",
     category: "sweet",

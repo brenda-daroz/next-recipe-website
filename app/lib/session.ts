@@ -5,6 +5,7 @@ import { SignJWT, jwtVerify } from "jose";
 export type SessionPayload = {
   userId: string;
   userName: string;
+  role: string;
   expiresAt: Date;
 };
 
@@ -30,9 +31,9 @@ export async function decrypt(session: string | undefined = "") {
   }
 }
 
-export async function createSession(userId: string, userName: string) {
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  const session = await encrypt({ userId, userName, expiresAt });
+export async function createSession(userId: string, userName: string, role: string) {
+  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+  const session = await encrypt({ userId, userName, expiresAt, role });
   const cookieStore = await cookies();
 
   cookieStore.set("session", session, {
@@ -47,6 +48,17 @@ export async function createSession(userId: string, userName: string) {
 export async function getSessionFromCookies() {
   const cookieStore = cookies();
   const session = (await cookieStore).get("session")?.value;
+  if (!session) return null;
 
-  return await decrypt(session);
+  try {
+    const payload = await decrypt(session);
+    return payload; // { userId, userName, role }
+  } catch (err) {
+    console.error("Failed to decrypt session", err);
+    return null;
+  }
+  // const cookieStore = cookies();
+  // const session = (await cookieStore).get("session")?.value;
+
+  // return await decrypt(session);
 }

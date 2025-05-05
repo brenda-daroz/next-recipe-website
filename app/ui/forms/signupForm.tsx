@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signup } from "../actions/auth";
+import { signup } from "../../actions/auth";
 
 function SignupForm() {
   const [name, setName] = useState("");

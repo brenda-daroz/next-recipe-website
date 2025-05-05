@@ -1,22 +1,17 @@
-import { cookies } from "next/headers";
-import { decrypt } from "@/app/lib/session";
+import { getSessionFromCookies } from "@/app/lib/session";
 import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
-  const cookieStore = cookies();
-  const session = (await cookieStore).get("session")?.value;
+  const session = await getSessionFromCookies()
 
-  const payload = await decrypt(session);
-  console.log("payload", payload);
-
-  if (!payload || !payload.userId) {
+  if (!session) {
     redirect("/login");
   }
 
   return (
     <div>
-      <h1>Admin</h1>
-      <p>Welcome user: {String(payload.userName)}</p>
+      <h1>Admin: {String(session.role)}</h1>
+      <p>Welcome user: {String(session.userName)}</p>
     </div>
   );
 }

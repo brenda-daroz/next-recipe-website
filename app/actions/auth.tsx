@@ -39,12 +39,13 @@ export async function signin(data: { email: string; password: string }) {
     };
   }
   if (isValid) {
-    await createSession(user.id, user.name);
+    await createSession(user.id, user.name, user.role);
     return {
       message: "User logged in successfully",
       user: {
         name: user.name,
         email: user.email,
+        role: user.role
       },
     };
   }

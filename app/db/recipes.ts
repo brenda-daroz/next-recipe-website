@@ -30,7 +30,7 @@ const recipeMinimalSchema = recipeSchema
     category: z.string(),
   });
 
-export type Recipe = z.infer<typeof recipeSchema>;
+export type RecipeProps = z.infer<typeof recipeSchema>;
 export type RecipeMinimal = z.infer<typeof recipeMinimalSchema>;
 
 export async function getHomePageData() {
@@ -49,7 +49,7 @@ export async function getHomePageData() {
   }
 }
 
-export async function getRecipeById(id: string) {
+export async function getRecipeById(id: string): Promise<RecipeProps[]> {
   const query = "SELECT * FROM recipes WHERE id = $1";
 
   try {
@@ -69,7 +69,7 @@ export async function getAllRecipes() {
 
   try {
     const { rows } = await pool.query(query);
-    const validatedRows = rows.map((row: Recipe) => recipeSchema.parse(row));
+    const validatedRows = rows.map((row: RecipeProps) => recipeSchema.parse(row));
     console.log("getAllRecipes:", validatedRows);
     return rows;
   } catch (error) {

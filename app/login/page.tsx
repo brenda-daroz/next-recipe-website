@@ -12,30 +12,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { redirect } from "next/navigation";
-import router from "next/router";
+import { useSession } from "../lib/context/SessionContext";
+
 
 export default function SigninForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [_user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
+  const { user, loading } = useSession();
 
   useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const response = await fetch("/api/auth/verify");
-        if (response.ok) {
-          const data = await response.json();
-          router.push("/admin");
-        }
-      } catch (error) {
-        console.log("No session or invalid session:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    checkSession();
-  }, [router]);
+    if (user) {
+      redirect("/admin");
+    }
+  }, [user]);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();

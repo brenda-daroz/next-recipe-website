@@ -20,7 +20,8 @@
     "postcss": "^8.5.3",
     "prettier": "3.5.3",
     "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
@@ -31,12 +32,14 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "jose": "^6.0.10",
     "lucide-react": "^0.503.0",
     "next": "^15.2.4",
     "pg": "^8.14.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.1",
     "styled-components": "^6.0.7",
     "tailwind-merge": "^3.2.0",
     "tailwindcss-animate": "^1.0.7",

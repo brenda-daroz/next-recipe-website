@@ -2,6 +2,7 @@ import React from "react";
 import StyledComponentsRegistry from "../lib/registry";
 import "./globals.css";
 import { Header } from "./ui/header";
+import { SessionProvider } from "./lib/context/SessionContext";
 
 export const metadata = {
   title: "Brenda Recipes",
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <SessionProvider>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </SessionProvider>
       </body>
     </html>
   );

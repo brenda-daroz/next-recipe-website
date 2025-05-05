@@ -1,16 +1,7 @@
 "use client";
 import styled from "styled-components";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
-
-export interface Recipe {
-  id: string;
-  title: string;
-  category: "savory" | "sweet";
-  ingredients: string;
-  instructions: string[];
-  created_at?: string;
-  updated_at?: string;
-}
+import { RecipeProps } from "../app/db/recipes";
 
 const RecipeContainer = styled.div`
   background-color: #fff;
@@ -47,9 +38,8 @@ const ListItem = styled.li`
   list-style: none;
 `;
 
-export default function Recipe(recipe: Recipe) {
+export default function Recipe(recipe: RecipeProps) {
   const parsedIngredients = JSON.parse(recipe.ingredients);
-  console;
   return (
     <RecipeContainer>
       <h1>{capitalizeFirstLetter(recipe.title)}</h1>
@@ -69,7 +59,7 @@ export default function Recipe(recipe: Recipe) {
                         <ListItem key={subIngredient}>
                           {capitalizeFirstLetter(subIngredient)} - {subAmount}
                         </ListItem>
-                      ),
+                      )
                     )}
                 </List>
               </>

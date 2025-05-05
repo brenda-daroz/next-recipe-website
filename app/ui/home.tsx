@@ -1,8 +1,10 @@
 "use client";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import styled from "styled-components";
-import Link from "next/link.js";
+import Link from "next/link";
 import { RecipeMinimal } from "../db/recipes";
+import { useSession } from "../lib/context/SessionContext";
+import { redirect } from "next/navigation";
 
 const ListContainer = styled.div`
   margin-top: 20px;
@@ -10,10 +12,9 @@ const ListContainer = styled.div`
 
 const RecipeLink = styled.div`
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #333;
   text-decoration: none;
-  margin-bottom: 5px;
 
   &:hover {
     color: #ff5733;
@@ -27,23 +28,34 @@ function RecipeList({
   recipes: RecipeMinimal[];
   category: string;
 }) {
+  const { isAdmin } = useSession();
+  const handleEdit = (id: string) => {
+    redirect(`/edit/${id}`);
+  };
+
   return (
     <ListContainer>
-      <div className="text-3xl font-bold underline">
+      <div className="text-2xl underline mb-4">
         {capitalizeFirstLetter(category)}
       </div>
       <ul>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
+          <li key={recipe.id} className="flex items-center gap-4">
             <Link
-              href={{
-                pathname: `/recipes/${encodeURIComponent(recipe.id)}`,
-                query: { object: JSON.stringify(recipe) },
-              }}
-              as={`/recipes/${recipe.id}`}
+              href={`/recipes/${recipe.id}`}
+              passHref
             >
               <RecipeLink>{capitalizeFirstLetter(recipe.title)}</RecipeLink>
             </Link>
+
+            {isAdmin && (
+              <button
+                onClick={() => handleEdit(recipe.id)}
+                className="text-sm text-blue-600 underline hover:text-blue-800 cursor-pointer"
+              >
+                Edit
+              </button>
+            )}
           </li>
         ))}
       </ul>
@@ -52,13 +64,20 @@ function RecipeList({
 }
 
 export default function Index({ recipes }: { recipes: RecipeMinimal[] }) {
-  const savory = recipes.filter((recipe) => recipe.category === "savory");
-  const sweet = recipes.filter((recipe) => recipe.category === "sweet");
+
+  const grouped = recipes.reduce<Record<string, RecipeMinimal[]>>((acc, recipe) => {
+    if (!acc[recipe.category]) {
+      acc[recipe.category] = [];
+    }
+    acc[recipe.category].push(recipe);
+    return acc;
+  }, {});
 
   return (
     <div>
-      <RecipeList recipes={savory} category="savory" />
-      <RecipeList recipes={sweet} category="sweet" />
+      {Object.entries(grouped).map(([category, groupedRecipes]) => (
+          <RecipeList key={category} recipes={groupedRecipes} category={category} />
+      ))}
     </div>
   );
 }
