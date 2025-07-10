@@ -6,9 +6,8 @@ export interface Recipe {
   steps: string[];
 }
 
-
 export const recipes: Recipe[] = [
-  { 
+  {
     id: "1",
     category: "sweet",
     title: "Basque Cheesecake",
@@ -568,5 +567,50 @@ export const recipes: Recipe[] = [
       "Shape the dough into a pizza shape.",
       "Add toppings of choice.",
     ],
-  }
+  },
+  {
+    id: "27",
+    category: "sweet",
+    title: "Chocolate cake",
+    ingredients: {
+      batter: {
+        eggs: "3",
+        milk: "200 mL",
+        oil: "80 g",
+        sugar: "230 g",
+        "cocoa powder 50%": "3 tbsps",
+        flour: "320 g",
+        "baking powder": "1 tbsp",
+        "baking soda": "1 tsp",
+      },
+      "filling/topping": {
+        "condensed milk": "1 can",
+        "cocoa powder 50%": "1 tbsp",
+        butter: "1/2 tbsp",
+        "heavy cream": "1 can",
+        "50% chocolate bar": "100 g",
+      },
+      syrup: {
+        milk: "500 mL",
+        sugar: "1/2 cup",
+        "cocoa powder 50%": "4 tbsp",
+        butter: "1 tbsp",
+      },
+    },
+    steps: [
+      "Preheat oven to 180°C.",
+      "In a mixer, add eggs, milk, oil, sugar, cocoa powder and mix until smooth.",
+      "Transfer to a bowl and sift in flour and baking powder mixing slowly just until combined.",
+      "Bake for 40 minutes or until golden brown.",
+      "In a saucepan, add condensed milk, butter and cocoa powder.",
+      "Turn the heat low and add the heavy cream and chocolate bar.",
+      "Mix until combined and let it cool.",
+      "In a saucepan, add milk, sugar, cocoa powder and butter.",
+      "Mix everything until it boils.",
+      "Cut the cake in half and soak each half with the syrup.",
+      "Spread the filling on one half, cover with the other half and pour the remaining filling over the top.",
+      "Sprinkle with chocolate shavings if desired.",
+      "Let it refrigerate over night and serve.",
+    ],
+  },
 ];
