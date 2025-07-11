@@ -89,7 +89,7 @@ export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
               {formik.values.instructions.map((_instruction, index) => (
                 <div key={index} className="flex items-center gap-2 mb-2">
                     <div>{index +1}</div>
-                  <Input
+                  <Textarea
                     placeholder={`Instruction ${index + 1}`}
                     {...formik.getFieldProps(`instructions[${index}]`)}
                     style={{ width: "100%", fontFamily: "monospace" }}
@@ -120,7 +120,7 @@ export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
             </div>
           </CardContent>
           <CardFooter className="flex justify-between pt-2">
-            <Button type="submit">Edit</Button>
+            <Button type="submit">Submit</Button>
           </CardFooter>
         </form>
       </Card>
