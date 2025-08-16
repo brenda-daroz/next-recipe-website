@@ -8,7 +8,8 @@ export interface RecipeJson {
   updated_at?: string;
 }
 
-export const recipes: RecipeJson[] = [
+
+export const recipes: Recipe[] = [
   {
     id: "1",
     category: "sweet",
@@ -587,10 +588,10 @@ export const recipes: RecipeJson[] = [
       },
       "filling/topping": {
         "condensed milk": "1 can",
+        "cocoa powder 50%": "1 tbsp",
+        butter: "1/2 tbsp",
         "heavy cream": "1 can",
         "50% chocolate bar": "100 g",
-        butter: "1/2 tbsp",
-        "cocoa powder 50%": "1 tbsp",
       },
       syrup: {
         milk: "500 mL",
@@ -599,6 +600,64 @@ export const recipes: RecipeJson[] = [
         butter: "1 tbsp",
       },
     },
-    instructions: [],
+    steps: [
+      "Preheat oven to 180°C.",
+      "In a mixer, add eggs, milk, oil, sugar, cocoa powder and mix until smooth.",
+      "Transfer to a bowl and sift in flour and baking powder mixing slowly just until combined.",
+      "Bake for 40 minutes or until golden brown.",
+      "In a saucepan, add condensed milk, butter and cocoa powder.",
+      "Turn the heat low and add the heavy cream and chocolate bar.",
+      "Mix until combined and let it cool.",
+      "In a saucepan, add milk, sugar, cocoa powder and butter.",
+      "Mix everything until it boils.",
+      "Cut the cake in half and soak each half with the syrup.",
+      "Spread the filling on one half, cover with the other half and pour the remaining filling over the top.",
+      "Sprinkle with chocolate shavings if desired.",
+      "Let it refrigerate over night and serve.",
+    ],
+  },
+  {
+    id: "28",
+    category: "sweet",
+    title: "Passion fruit cake",
+    ingredients: {
+      batter: {
+        eggs: "3",
+        yolks: "2",
+        sugar: "300 g",
+        oil: "100 g",
+        milk: "120 mL",
+        "lemon juice": "1 tbsp",
+        flour: "400 g",
+        "baking powder": "1 tbsp",
+      },
+      filling: {
+        "passion fruit juice/pulp": "200 mL",
+        "condensed milk": "1 can",
+        "heavy cream": "200 mL",
+        "powdered milk": "60 g",
+        "white chocolate": "300 g",
+      },
+      syrup: {
+        "passion fruit juice/pulp": "100 mL",
+        sugar: "100 g",
+        water: "100 mL",
+      },
+      topping: {},
+    },
+    steps: [
+      "Beat the eggs + yolks until starts to increase in volume",
+      "Add sugar slowly and beat until it triples in volume and looks whiteshy",
+      "Heat the milk just until warm and add the lemon juice",
+      "Add the milk mixture and oil into the eggs and sugar mixture until combined",
+      "Sift flour and mix until smooth",
+      "Sift baking powder and mix until smooth",
+      "Pour into a greased pan and bake for 55 minutes at 180°C",
+      "For the filling, mix passion fruit juice/pulp, condensed milk, powdered milk and white chocolate in a mixer until smooth.",
+      "Melt chocolate in a double boiler or microwave until smooth.",
+      "Mix with the heavy cream until combined to make a ganache.",
+      "Combine ganache into the filling mixture and beat until smooth.",
+      "Bring to the refrigerator for 2 hours.",
+    ],
   },
 ];
