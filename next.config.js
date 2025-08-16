@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-const pathPrefix = process.env.NODE_ENV === 'production'
-  ? '/next-recipe-website'
-  : '';
-
-  const nextConfig = {
-  basePath: pathPrefix,
-   output: "export",
-
+module.exports = {
+  compiler: {
+    styledComponents: true,
   }
-
-module.exports = nextConfig
+}

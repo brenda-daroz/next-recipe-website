@@ -1,8 +1,8 @@
-import BigUseClient from "@/components/BigUseClient";
-import { recipes } from "../recipes.js";
+import BigUseClient from "../components/BigUseClient";
+import { recipes } from "../recipes";
 import Head from "next/head";
 
-export default function Page({ recipes }) {
+export default function Page() {
   return (
     <>
       <Head>
@@ -17,7 +17,3 @@ export default function Page({ recipes }) {
     </>
   );
 }
-
-export const getStaticProps = () => {
-  return { props: { recipes: recipes } };
-};
