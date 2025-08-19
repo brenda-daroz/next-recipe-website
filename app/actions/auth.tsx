@@ -1,7 +1,7 @@
 "use server";
 import { createUser, getUserByEmail } from "../db/users";
 import { createSession } from "../lib/session";
-const bcrypt = require("bcrypt");
+import bcrypt from "bcryptjs";
 
 export async function signup(data: {
   name: string;
