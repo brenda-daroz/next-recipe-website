@@ -38,37 +38,48 @@ const ListItem = styled.li`
   list-style: none;
 `;
 
+type NormalizedIngredient = {
+  name: string;
+  quantity: string | number;
+};
+
 export default function Recipe(recipe: RecipeProps) {
-  const parsedIngredients = JSON.parse(recipe.ingredients);
+  const parsedIngredients = recipe.ingredients;
+
+  const renderIngredients = (ingredients: any) => {
+    if (Array.isArray(ingredients)) {
+      // Flat ingredients array
+      return (
+        <List>
+          {ingredients.map((item: NormalizedIngredient) => (
+            <ListItem key={item.name}>
+              {capitalizeFirstLetter(item.name)} - {item.quantity}
+            </ListItem>
+          ))}
+        </List>
+      );
+    } else if (typeof ingredients === "object") {
+      // Nested sections
+      return (
+        <>
+          {Object.entries(ingredients).map(([section, items]) => (
+            <div key={section}>
+              <SubSectionTitle>{capitalizeFirstLetter(section)}:</SubSectionTitle>
+              {renderIngredients(items)}
+            </div>
+          ))}
+        </>
+      );
+    }
+    return null;
+  };
+
   return (
     <RecipeContainer>
       <h1>{capitalizeFirstLetter(recipe.title)}</h1>
       <SectionTitle>Ingredients</SectionTitle>
-      <List>
-        {Object.entries(parsedIngredients).map(([section, ingredients]) => (
-          <ListItem key={section}>
-            {typeof ingredients === "object" ? (
-              <>
-                <SubSectionTitle>
-                  {capitalizeFirstLetter(section)}:
-                </SubSectionTitle>
-                <List>
-                  {ingredients &&
-                    Object.entries(ingredients).map(
-                      ([subIngredient, subAmount]) => (
-                        <ListItem key={subIngredient}>
-                          {capitalizeFirstLetter(subIngredient)} - {subAmount}
-                        </ListItem>
-                      )
-                    )}
-                </List>
-              </>
-            ) : (
-              `${capitalizeFirstLetter(section)} - ${ingredients}`
-            )}
-          </ListItem>
-        ))}
-      </List>
+      {renderIngredients(parsedIngredients)}
+
       {recipe.instructions.length > 0 && (
         <>
           <SectionTitle>Steps</SectionTitle>

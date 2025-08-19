@@ -5,14 +5,29 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+export const IngredientItemSchema = z.object({
+  name: z.string(),
+  quantity: z.string(),
+});
+
+export const NestedIngredientsSchema: z.ZodType<any> = z.lazy(() =>
+  z.union([
+    z.array(IngredientItemSchema),
+    z.record(NestedIngredientsSchema),
+  ])
+);
+
+export const CategoryEnum = z.enum(["savory", "sweet", "bread"]);
+
 const recipeSchema = z.object({
   id: z.string(),
   title: z.string(),
-  category: z.string(),
-  ingredients: z.string(),
+  category: CategoryEnum,
+  ingredients: NestedIngredientsSchema,
   instructions: z.array(z.string()),
-  created_at: z.date().optional(),
-  updated_at: z.date().optional(),
+  created_at: z.date(),
+  updated_at: z.date(),
+  image_url: z.string().optional().nullable()
 });
 
 const recipeArraySchema = z.array(recipeSchema);
@@ -27,15 +42,17 @@ const recipeMinimalSchema = recipeSchema
   .extend({
     id: z.string(),
     title: z.string(),
-    category: z.string(),
+    category: CategoryEnum,
+    image_url: z.string().optional().nullable()
   });
 
 export type RecipeProps = z.infer<typeof recipeSchema>;
 export type RecipeMinimal = z.infer<typeof recipeMinimalSchema>;
+export type RecipeCategory = z.infer<typeof CategoryEnum>;
 
 export async function getHomePageData() {
   const query =
-    "SELECT id, title, category FROM recipes ORDER BY created_at DESC";
+    "SELECT id, title, category, image_url FROM recipes ORDER BY created_at DESC";
 
   try {
     const { rows } = await pool.query(query);

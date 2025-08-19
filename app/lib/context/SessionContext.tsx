@@ -35,7 +35,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     check();
   }, []);
 
-  const isAdmin = user?.role === "admin";
+  const isAdmin = user?.role === "editor";
 
   return (
     <SessionContext.Provider value={{ user, isAdmin, loading }}>

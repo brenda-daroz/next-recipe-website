@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { signin } from "../actions/auth";
+import { signin, signup } from "../actions/auth";
 import {
   Card,
   CardHeader,
@@ -14,11 +14,11 @@ import { Label } from "@/components/ui/label";
 import { redirect } from "next/navigation";
 import { useSession } from "../lib/context/SessionContext";
 
-
-export default function SigninForm() {
+export default function AuthForm() {
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [_user, setUser] = useState({});
   const { user, loading } = useSession();
 
   useEffect(() => {
@@ -27,18 +27,20 @@ export default function SigninForm() {
     }
   }, [user]);
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await signin({
-      email,
-      password,
-    });
-    console.log("response", response);
-    if (response && response.user) {
-      setUser(response.user);
+    let response;
+
+    if (mode === "signin") {
+      response = await signin({ email, password });
+    } else {
+      response = await signup({ name, email, password });
+    }
+
+    if (response && user) {
       redirect("/admin");
     } else {
-      console.log(response?.message);
+      console.log(response?.message || "Something went wrong");
     }
   };
 
@@ -46,19 +48,33 @@ export default function SigninForm() {
     <div className="text-lg">Loading...</div>
   ) : (
     <div className="flex items-center justify-center h-screen">
-      <Card className="w-full max-w-sm p-6 shadow-xl rounded-2xl border h-1/2">
+      <Card className="w-full max-w-sm p-6 shadow-xl rounded-2xl border">
         <CardHeader>
-          <CardTitle className="text-xl">Sign In</CardTitle>
+          <CardTitle className="text-xl">
+            {mode === "signin" ? "Sign In" : "Create Account"}
+          </CardTitle>
         </CardHeader>
         <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4 padding-4">
+          <CardContent className="space-y-4">
+            {mode === "signup" && (
+              <div>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+            )}
             <div>
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e: any) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -68,13 +84,24 @@ export default function SigninForm() {
                 id="password"
                 type="password"
                 value={password}
-                onChange={(e: any) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between pt-2">
-            <Button type="submit">Submit</Button>
+          <CardFooter className="flex justify-between pt-2 items-center">
+            <Button type="submit">
+              {mode === "signin" ? "Sign In" : "Sign Up"}
+            </Button>
+            <button
+              type="button"
+              className="text-sm text-blue-600 hover:underline"
+              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+            >
+              {mode === "signin"
+                ? "New user? Create account"
+                : "Already have an account? Sign in"}
+            </button>
           </CardFooter>
         </form>
       </Card>

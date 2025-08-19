@@ -1,62 +1,56 @@
 "use client";
 
-// import { useForm } from "react-hook-form";
 import { useFormik } from "formik";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
 import { RecipeProps } from "@/app/db/recipes";
-import { MinusCircledIcon } from "@radix-ui/react-icons";
+import { IngredientsForm } from "./ingredients-form";
+import { InstructionsForm } from "./instructions-form";
 
+interface IngredientItem {
+  name: string;
+  quantity: string;
+}
 
 interface FormValues {
   title: string;
   category: string;
-  ingredients: string;
+  ingredients: {
+    [section: string]: IngredientItem[];
+  };
   instructions: string[];
 }
 
 interface EditRecipeFormProps {
-    recipe: RecipeProps;
-  }
+  recipe?: RecipeProps;
+}
 
 export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
-  console.log("recipe", recipe.title);
-  const parsedIngredients = JSON.parse(recipe.ingredients);
+  const recipeCategories = ["savory", "sweet", "bread"] as const;
   const formik = useFormik<FormValues>({
     initialValues: {
-      title: recipe.title,
-      category: recipe.category,
-      ingredients: (() => {
-        if (!parsedIngredients || typeof parsedIngredients !== "object") return "";
-      
-        return Object.entries(parsedIngredients)
-          .map(([key, value]) => {
-            if (typeof value === "object" && value !== null) {
-              const nested = Object.entries(value)
-                .map(([subKey, subValue]) => `${subKey} - ${subValue}`)
-                .join("\n");
-              return `${key}:\n${nested}`;
-            }
-            return `${key} - ${value}`;
-          })
-          .join("\n");
-      })(),
-      instructions: recipe.instructions.map((instruction) => instruction),
+      title: recipe?.title || "",
+      category: recipe?.category || "",
+      ingredients: recipe?.ingredients
+        ? Array.isArray(recipe.ingredients) && recipe.ingredients.length
+          ? { "": recipe.ingredients }
+          : Object.fromEntries(
+              Object.entries(recipe.ingredients).map(([section, items]) => [
+                section,
+                Array.isArray(items)
+                  ? (items as IngredientItem[])
+                  : Object.entries(items as Record<string, string>).map(
+                      ([name, quantity]) => ({ name, quantity })
+                    ),
+              ])
+            )
+        : { "": [] },
+      instructions: recipe?.instructions || [""],
     },
     onSubmit: (data) => {
-      try {
-        const parsedIngredients = JSON.parse(data.ingredients);
-        const updatedRecipe = {
-          ...data,
-          ingredients: parsedIngredients,
-        };
-        console.log("Updated data:", updatedRecipe);
-      } catch (e) {
-        console.error("Invalid JSON in ingredients");
-      }
+      console.log("Updated recipe:", data);
     },
   });
 
@@ -65,59 +59,40 @@ export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
       <Card className="w-full max-w-lg p-6 shadow-xl rounded-2xl border">
         <form onSubmit={formik.handleSubmit}>
           <CardContent>
-            <Label htmlFor="email">Title</Label>
+            <Label>Title</Label>
             <Input
               type="text"
               placeholder="Title"
               {...formik.getFieldProps("title")}
             />
-            <Label htmlFor="email">Category</Label>
-            <Input
-              type="text"
-              placeholder="Category"
+
+            <Label>Category</Label>
+            <select
               {...formik.getFieldProps("category")}
-            />
-            <Label htmlFor="email">Ingredients</Label>
-            <Textarea
-              placeholder="Ingredients"
-              {...formik.getFieldProps("ingredients")}
-              style={{ width: "100%", fontFamily: "monospace" }}
-              rows={4}
-            />
-            <Label htmlFor="instructions">Instructions</Label>
-            <div>
-              {formik.values.instructions.map((_instruction, index) => (
-                <div key={index} className="flex items-center gap-2 mb-2">
-                    <div>{index +1}</div>
-                  <Textarea
-                    placeholder={`Instruction ${index + 1}`}
-                    {...formik.getFieldProps(`instructions[${index}]`)}
-                    style={{ width: "100%", fontFamily: "monospace" }}
-                  />
-                  <MinusCircledIcon 
-              
-                    type="button"
-                    onClick={() => {
-                      const newInstructions = [...formik.values.instructions];
-                      newInstructions.splice(index, 1);
-                      formik.setFieldValue("instructions", newInstructions);
-                    }}
-                    className="text-red-500 cursor-pointer"
-                  
-                    />
-                </div>
+              className="border rounded p-2 w-full"
+            >
+              {recipeCategories.map((item) => (
+                <option key={item} value={item}>
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </option>
               ))}
-              <button
-                type="button"
-                onClick={() => {
-                  const newInstructions = [...formik.values.instructions, ""];
-                  formik.setFieldValue("instructions", newInstructions);
-                }}
-                className="text-blue-500"
-              >
-                Add more step
-              </button>
-            </div>
+            </select>
+            <Label>Ingredients</Label>
+            <IngredientsForm
+              ingredients={formik.values.ingredients}
+              onChange={(newIngredients) =>
+                formik.setFieldValue("ingredients", newIngredients)
+              }
+            />
+
+            {/* Instructions */}
+            <Label>Instructions</Label>
+            <InstructionsForm
+              instructions={formik.values.instructions}
+              onChange={(newInstructions) =>
+                formik.setFieldValue("instructions", newInstructions)
+              }
+            />
           </CardContent>
           <CardFooter className="flex justify-between pt-2">
             <Button type="submit">Submit</Button>

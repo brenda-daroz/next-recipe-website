@@ -5,6 +5,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+
 export const SignupFormSchema = z.object({
   name: z.string().trim(),
   email: z.string().email({ message: "Please enter a valid email." }).trim(),
