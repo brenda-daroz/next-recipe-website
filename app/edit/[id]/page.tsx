@@ -1,15 +1,25 @@
 import { getRecipeById } from "@/app/db/recipes";
 import EditRecipeForm from "@/components/form";
+import { ReactElement } from "react";
 
 interface Params {
   id: string;
 }
 
-export default async function EditRecipePage({ params }: { params: Params }) {
-  const recipe = await getRecipeById(params.id);
-  if (!recipe) return <div>Recipe not found</div>;
+interface Props {
+  params: Promise<Params>;
+}
 
-  console.log("EditRecipePage recipe", recipe);
+export default async function EditRecipePage({
+  params,
+}: Props): Promise<ReactElement> {
+  const { id } = await params;
+
+  const recipe = await getRecipeById(id);
+
+  if (!recipe || recipe.length === 0) {
+    return <div>Recipe not found</div>;
+  }
 
   return <EditRecipeForm recipe={recipe[0]} />;
 }
