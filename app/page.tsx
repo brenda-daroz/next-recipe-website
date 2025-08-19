@@ -1,3 +1,4 @@
+import React from 'react';
 import Index from "./ui/home";
 import Head from "next/head";
 import { getHomePageData } from "./db/recipes";
