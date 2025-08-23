@@ -71,7 +71,6 @@ export async function getRecipeById(id: string): Promise<RecipeProps[]> {
 
   try {
     const { rows } = await pool.query(query, [id]);
-    console.log("getRecipeById:", rows);
     const validatedRows = recipeArraySchema.parse(rows);
     console.log("one recipe?", validatedRows);
     return rows;
@@ -87,8 +86,7 @@ export async function getAllRecipes() {
   try {
     const { rows } = await pool.query(query);
     const validatedRows = rows.map((row: RecipeProps) => recipeSchema.parse(row));
-    console.log("getAllRecipes:", validatedRows);
-    return rows;
+    return validatedRows;
   } catch (error) {
     console.error("Error fetching data from PostgreSQL:", error);
     throw new Error("Failed to fetch data from database");

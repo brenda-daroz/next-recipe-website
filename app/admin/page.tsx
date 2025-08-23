@@ -1,8 +1,9 @@
+import React from "react";
 import { getSessionFromCookies } from "@/app/lib/session";
 import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
-  const session = await getSessionFromCookies()
+  const session = await getSessionFromCookies();
 
   if (!session) {
     redirect("/login");

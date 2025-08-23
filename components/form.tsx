@@ -1,10 +1,6 @@
 "use client";
 
 import { useFormik } from "formik";
-import { Card, CardContent, CardFooter } from "./ui/card";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 import { RecipeProps } from "@/app/db/recipes";
 import { IngredientsForm } from "./ingredients-form";
 import { InstructionsForm } from "./instructions-form";
@@ -55,21 +51,23 @@ export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
   });
 
   return (
-    <div className="flex items-center justify-center">
-      <Card className="w-full max-w-lg p-6 shadow-xl rounded-2xl border">
-        <form onSubmit={formik.handleSubmit}>
-          <CardContent>
-            <Label>Title</Label>
-            <Input
+      <div className="max-w-3xl mx-auto my-6 p-8 bg-yellow-50 border-4 border-pink-500 font-['Comic_Sans_MS'] text-black">
+        <form onSubmit={formik.handleSubmit} className="space-y-4">
+          <label className="block font-bold text-black">
+            Title
+            <input
               type="text"
               placeholder="Title"
               {...formik.getFieldProps("title")}
+              className="block w-full mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
             />
+          </label>
 
-            <Label>Category</Label>
+          <label className="block font-bold text-black">
+            Category
             <select
               {...formik.getFieldProps("category")}
-              className="border rounded p-2 w-full"
+              className="block w-full mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
             >
               {recipeCategories.map((item) => (
                 <option key={item} value={item}>
@@ -77,28 +75,40 @@ export default function EditRecipeForm({ recipe }: EditRecipeFormProps) {
                 </option>
               ))}
             </select>
-            <Label>Ingredients</Label>
-            <IngredientsForm
-              ingredients={formik.values.ingredients}
-              onChange={(newIngredients) =>
-                formik.setFieldValue("ingredients", newIngredients)
-              }
-            />
+          </label>
 
-            {/* Instructions */}
-            <Label>Instructions</Label>
-            <InstructionsForm
-              instructions={formik.values.instructions}
-              onChange={(newInstructions) =>
-                formik.setFieldValue("instructions", newInstructions)
-              }
-            />
-          </CardContent>
-          <CardFooter className="flex justify-between pt-2">
-            <Button type="submit">Submit</Button>
-          </CardFooter>
+          <label className="block font-bold text-black">Ingredients</label>
+          <IngredientsForm
+            ingredients={formik.values.ingredients}
+            onChange={(newIngredients) =>
+              formik.setFieldValue("ingredients", newIngredients)
+            }
+          />
+
+          <label className="block font-bold text-black">Instructions</label>
+          <InstructionsForm
+            instructions={formik.values.instructions}
+            onChange={(newInstructions) =>
+              formik.setFieldValue("instructions", newInstructions)
+            }
+          />
+
+          <div className="flex justify-between pt-2">
+            <button
+              type="submit"
+              className="bg-gray-200 border-2 border-black px-4 py-1 font-mono text-sm hover:bg-yellow-200 active:translate-y-[1px]"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              onClick={() => formik.resetForm()}
+              className="bg-gray-200 border-2 border-black px-4 py-1 font-mono text-sm hover:bg-yellow-200 active:translate-y-[1px]"
+            >
+              Reset
+            </button>
+          </div>
         </form>
-      </Card>
-    </div>
+      </div>
   );
 }

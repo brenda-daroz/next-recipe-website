@@ -1,42 +1,7 @@
 "use client";
-import styled from "styled-components";
+import React from "react";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
 import { RecipeProps } from "../app/db/recipes";
-
-const RecipeContainer = styled.div`
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  max-width: 800px;
-  margin: 20px auto;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 1.4rem;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-`;
-
-const SubSectionTitle = styled.h4`
-  font-size: 1rem;
-  margin: 16px 0 8px;
-  color: #555;
-`;
-
-const List = styled.ul`
-  padding-left: 20px;
-  margin-bottom: 30px;
-`;
-
-const ListItem = styled.li`
-  margin-bottom: 10px;
-  line-height: 1.2;
-  list-style: none;
-`;
 
 type NormalizedIngredient = {
   name: string;
@@ -46,25 +11,25 @@ type NormalizedIngredient = {
 export default function Recipe(recipe: RecipeProps) {
   const parsedIngredients = recipe.ingredients;
 
-  const renderIngredients = (ingredients: any) => {
+  const renderIngredients = (ingredients: RecipeProps) => {
     if (Array.isArray(ingredients)) {
-      // Flat ingredients array
       return (
-        <List>
+        <ul className="pl-6 mb-6 list-none">
           {ingredients.map((item: NormalizedIngredient) => (
-            <ListItem key={item.name}>
+            <li key={item.name} className="mb-2 leading-snug">
               {capitalizeFirstLetter(item.name)} - {item.quantity}
-            </ListItem>
+            </li>
           ))}
-        </List>
+        </ul>
       );
     } else if (typeof ingredients === "object") {
-      // Nested sections
       return (
         <>
           {Object.entries(ingredients).map(([section, items]) => (
             <div key={section}>
-              <SubSectionTitle>{capitalizeFirstLetter(section)}:</SubSectionTitle>
+              <h4 className="text-base font-bold text-purple-800 mt-4 mb-2 underline decoration-dotted">
+                {capitalizeFirstLetter(section)}:
+              </h4>
               {renderIngredients(items)}
             </div>
           ))}
@@ -75,23 +40,30 @@ export default function Recipe(recipe: RecipeProps) {
   };
 
   return (
-    <RecipeContainer>
-      <h1>{capitalizeFirstLetter(recipe.title)}</h1>
-      <SectionTitle>Ingredients</SectionTitle>
+    <div className="max-w-3xl mx-auto my-6 p-8 bg-yellow-50 border-4 border-pink-500 font-['Comic_Sans_MS'] text-black">
+      <h1 className="text-3xl mb-6 text-center text-blue-700 tracking-wide">
+        {capitalizeFirstLetter(recipe.title)}
+      </h1>
+
+      <h2 className="text-xl font-bold mb-4 border-b-2 border-dashed border-green-600 pb-1">
+        Ingredients
+      </h2>
       {renderIngredients(parsedIngredients)}
 
       {recipe.instructions.length > 0 && (
         <>
-          <SectionTitle>Steps</SectionTitle>
-          <List>
+          <h2 className="text-xl font-bold mb-4 border-b-2 border-dashed border-green-600 pb-1">
+            Steps
+          </h2>
+          <ul className="pl-6 list-decimal list-inside space-y-2">
             {recipe.instructions.map((step, index) => (
-              <ListItem key={index}>
-                <strong>{index + 1}:</strong> {step}
-              </ListItem>
+              <li key={index} className="leading-snug ">
+                {step}
+              </li>
             ))}
-          </List>
+          </ul>
         </>
       )}
-    </RecipeContainer>
+    </div>
   );
 }

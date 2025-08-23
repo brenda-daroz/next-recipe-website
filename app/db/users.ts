@@ -5,7 +5,6 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-
 export const SignupFormSchema = z.object({
   name: z.string().trim(),
   email: z.string().email({ message: "Please enter a valid email." }).trim(),
@@ -21,25 +20,25 @@ export async function createUser({
   email: string;
   password: string;
 }) {
-  console.log("createUser", name, email, password);
-  const validatedFields = SignupFormSchema.safeParse({
-    name: name,
-    email: email,
-    password: password,
-  });
-
+  const validatedFields = SignupFormSchema.safeParse({ name, email, password });
   if (!validatedFields.success) {
     throw new Error(
-      "Validation failed: " + JSON.stringify(validatedFields.error.format()),
+      "Validation failed: " + JSON.stringify(validatedFields.error.format())
     );
   }
+
+  const existingUser = await getUserByEmail(email);
+  if (existingUser) {
+    throw new Error("A user with this email already exists.");
+  }
+
   const query =
     "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *";
   const values = [name, email, password];
 
   try {
     const { rows } = await pool.query(query, values);
-    return rows;
+    return rows[0];
   } catch (error) {
     console.error("Error creating user:", error);
     throw new Error("Failed to create user in database");

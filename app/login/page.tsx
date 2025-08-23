@@ -1,6 +1,5 @@
 "use client";
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signin, signup } from "../actions/auth";
 import {
   Card,
@@ -12,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useSession } from "../lib/context/SessionContext";
 
 export default function AuthForm() {
@@ -20,28 +19,35 @@ export default function AuthForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const { user, loading } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     if (user) {
-      redirect("/admin");
+      router.push("/"); // Navigate to home if already logged in
     }
   }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    let response;
+    setError(null); // Reset previous errors
+    try {
+      let response;
+      if (mode === "signin") {
+        response = await signin({ email, password });
+      } else {
+        response = await signup({ name, email, password });
+      }
 
-    if (mode === "signin") {
-      response = await signin({ email, password });
-    } else {
-      response = await signup({ name, email, password });
-    }
-
-    if (response && user) {
-      redirect("/admin");
-    } else {
-      console.log(response?.message || "Something went wrong");
+      if (response?.message) {
+        setError(response.message); // Display meaningful error
+      } else {
+        // Redirect to home on successful login/signup
+        router.push("/");
+      }
+    } catch (err: any) {
+      setError(err?.message || "Something went wrong");
     }
   };
 
@@ -89,6 +95,11 @@ export default function AuthForm() {
                 required
               />
             </div>
+
+            {/* Error message */}
+            {error && (
+              <div className="text-red-600 text-sm mt-1">{error}</div>
+            )}
           </CardContent>
           <CardFooter className="flex justify-between pt-2 items-center">
             <Button type="submit">

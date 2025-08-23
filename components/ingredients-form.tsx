@@ -16,9 +16,14 @@ export interface IngredientsFormProps {
   onChange: (newIngredients: { [section: string]: IngredientItem[] }) => void;
 }
 
-export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps) {
+export function IngredientsForm({
+  ingredients,
+  onChange,
+}: IngredientsFormProps) {
   const [sectionOrder, setSectionOrder] = useState<string[]>([]);
-  const [sectionRename, setSectionRename] = useState<Record<string, string>>({});
+  const [sectionRename, setSectionRename] = useState<Record<string, string>>(
+    {}
+  );
   const [newSectionName, setNewSectionName] = useState("");
   const [flatSectionName, setFlatSectionName] = useState("");
 
@@ -28,7 +33,9 @@ export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps)
     setSectionRename(Object.fromEntries(keys.map((k) => [k, k])));
   }, []);
 
-  const updateIngredients = (newIngredients: IngredientsFormProps["ingredients"]) => {
+  const updateIngredients = (
+    newIngredients: IngredientsFormProps["ingredients"]
+  ) => {
     onChange(newIngredients);
   };
 
@@ -74,45 +81,45 @@ export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps)
   return (
     <div>
       {sectionOrder.map((section) => (
-        <Card key={section || "flat"} className="mb-4 p-4 border rounded">
-          {/* Section name or flat conversion */}
+        <Card key={section || "flat"} className="mb-4 p-4 border">
           {section === "" ? (
             <div className="flex gap-2 mb-2">
-              <Input
+              <input
                 placeholder="Section name"
                 value={flatSectionName}
                 onChange={(e) => setFlatSectionName(e.target.value)}
+                className="block w-full mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
               />
-              <Button type="button" onClick={convertFlatSection}>
-                Convert to Section
-              </Button>
+              <button
+                type="button"
+                onClick={convertFlatSection}
+                disabled={!flatSectionName.trim()}
+                className="bg-gray-200 border-2 border-black px-4 py-1 font-mono text-sm hover:bg-yellow-200 active:translate-y-[1px]"
+              >
+                Convert to section
+              </button>
             </div>
           ) : (
-            <Input
+            <input
               placeholder="Section name"
               value={sectionRename[section]}
               onChange={(e) =>
-                setSectionRename((prev) => ({ ...prev, [section]: e.target.value }))
+                setSectionRename((prev) => ({
+                  ...prev,
+                  [section]: e.target.value,
+                }))
               }
               onBlur={() => renameSection(section)}
-              className="mb-2"
+              className="block w-full mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
             />
           )}
 
-          {/* Ingredients */}
           {ingredients[section].map((ingredient, i) => (
-            <div key={`${section}-${i}`} className="flex items-center gap-2 mb-2">
-              <Input
-                placeholder="Ingredient"
-                value={ingredient.name}
-                onChange={(e) => {
-                  const newIngredients = { ...ingredients };
-                  newIngredients[section][i].name = e.target.value;
-                  updateIngredients(newIngredients);
-                }}
-                className="flex-1"
-              />
-              <Input
+            <div
+              key={`${section}-${i}`}
+              className="flex items-center gap-2 mb-2"
+            >
+              <input
                 placeholder="Quantity"
                 value={ingredient.quantity}
                 onChange={(e) => {
@@ -120,7 +127,17 @@ export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps)
                   newIngredients[section][i].quantity = e.target.value;
                   updateIngredients(newIngredients);
                 }}
-                className="w-24"
+                className="w-24 mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
+              />
+              <input
+                placeholder="Ingredient"
+                value={ingredient.name}
+                onChange={(e) => {
+                  const newIngredients = { ...ingredients };
+                  newIngredients[section][i].name = e.target.value;
+                  updateIngredients(newIngredients);
+                }}
+                className="block w-full mt-1 border-2 border-black bg-white px-2 py-1 font-mono text-sm focus:outline-none focus:bg-yellow-100"
               />
 
               <MinusCircledIcon
@@ -135,7 +152,6 @@ export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps)
             </div>
           ))}
 
-          {/* Add ingredient */}
           <Button
             type="button"
             onClick={() => {
@@ -150,7 +166,6 @@ export function IngredientsForm({ ingredients, onChange }: IngredientsFormProps)
         </Card>
       ))}
 
-      {/* Add new section */}
       <div className="flex gap-2 mb-4">
         <Input
           placeholder="New section name"

@@ -1,3 +1,4 @@
+import React from "react";
 import Recipe from "../../../components/recipeDetails";
 import { getHomePageData, getRecipeById } from "../../db/recipes";
 
@@ -17,7 +18,6 @@ export default async function Page({
   const { slug } = await params;
   const recipes = await getRecipeById(slug);
   const recipe = recipes.find((recipe) => recipe.id === slug);
-  console.log(recipe);
 
   if (!recipe) {
     return <div>Recipe not found</div>;
@@ -25,7 +25,7 @@ export default async function Page({
 
   return (
     <>
-      <div className="container">
+      <div>
         <Recipe {...recipe} />
       </div>
     </>

@@ -7,7 +7,6 @@ function SignupForm() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    console.log("handlesubmit", name, email, password);
     signup({
       name,
       email,
