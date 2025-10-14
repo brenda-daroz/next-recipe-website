@@ -1,12 +1,16 @@
 "use client";
+import DeleteButton from "@/components//ui/deleteButton";
 import capitalizeFirstLetter from "../../utils/capitalizeFirstLetter";
 import { RecipeMinimal } from "../db/recipes";
 import { useSession } from "../lib/context/SessionContext";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import DeleteModal from "@/components/deleteModal";
 
 function RecipeCard({ recipe }: { recipe: RecipeMinimal }) {
   const { isAdmin } = useSession();
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div
@@ -25,22 +29,33 @@ function RecipeCard({ recipe }: { recipe: RecipeMinimal }) {
       </div>
 
       {isAdmin && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            router.push(`recipes/${recipe.id}/edit`);
-          }}
-          className="absolute top-2 right-2 bg-yellow-300 text-black text-xs px-3 py-1 font-mono border-2 border-black"
-          style={{
-            borderStyle: "outset",
-            fontFamily: "'Courier New', monospace",
-            boxShadow: "2px 2px 0px #333",
-          }}
-          onMouseDown={(e) => (e.currentTarget.style.borderStyle = "inset")}
-          onMouseUp={(e) => (e.currentTarget.style.borderStyle = "outset")}
-        >
-          EDIT
-        </button>
+        <>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push(`recipes/${recipe.id}/edit`);
+            }}
+            className="absolute top-2 right-2 bg-yellow-300 text-black text-xs px-3 py-1 font-mono border-2 border-black"
+            style={{
+              borderStyle: "outset",
+              fontFamily: "'Courier New', monospace",
+              boxShadow: "2px 2px 0px #333",
+            }}
+            onMouseDown={(e) => (e.currentTarget.style.borderStyle = "inset")}
+            onMouseUp={(e) => (e.currentTarget.style.borderStyle = "outset")}
+          >
+            EDIT
+          </button>
+          <>
+            <DeleteButton onClick={() => setShowModal(true)} />
+            {showModal && (
+              <DeleteModal
+                recipeId={recipe.id}
+                onClose={() => setShowModal(false)}
+              />
+            )}
+          </>
+        </>
       )}
     </div>
   );

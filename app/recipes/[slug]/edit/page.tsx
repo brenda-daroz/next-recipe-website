@@ -1,5 +1,5 @@
 import { getRecipeById } from "@/app/db/recipes";
-import EditRecipeForm from "@/components/form";
+import EditRecipeForm from "@/components/editRecipeForm";
 import { ReactElement } from "react";
 
 interface Params {

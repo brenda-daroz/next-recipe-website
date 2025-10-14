@@ -121,7 +121,7 @@ export async function editRecipe(
   }
 }
 
-export async function addRecipe(
+export async function createRecipe(
   recipe: Omit<RecipeProps, "id" | "created_at" | "updated_at">
 ) {
   const query = `
@@ -144,5 +144,16 @@ export async function addRecipe(
   } catch (error) {
     console.error("Error adding recipe to PostgreSQL:", error);
     throw new Error("Failed to add recipe to database");
+  }
+}
+
+export async function deleteRecipe(id: string) {
+  const query = "DELETE FROM recipes WHERE id = $1";
+  try {
+    await pool.query(query, [id]);
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting recipe from PostgreSQL:", error);
+    throw new Error("Failed to delete recipe from database");
   }
 }
