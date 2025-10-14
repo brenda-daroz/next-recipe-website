@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
     const updated = await editRecipe(data);
     return NextResponse.json(updated);
-  } catch (err) {
+  } catch (error) {
     return NextResponse.json({ error: "Failed to edit recipe" }, { status: 500 });
   }
 }

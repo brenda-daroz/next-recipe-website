@@ -53,7 +53,7 @@ export default function AuthForm() {
     <div className="flex items-center justify-center h-screen">
       <Card className="w-full max-w-sm p-6 shadow-xl rounded-2xl border">
         <CardHeader>
-          <CardTitle className="text-xl">"Sign In"</CardTitle>
+          <CardTitle className="text-xl">Sign In</CardTitle>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
@@ -80,13 +80,13 @@ export default function AuthForm() {
             {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
           </CardContent>
           <CardFooter className="flex justify-between pt-2 items-center">
-            <Button type="submit">"Sign In"</Button>
+            <Button type="submit">Sign In</Button>
             <button
               type="button"
               className="text-sm text-blue-600 hover:underline"
               onClick={() => setMode("signin")}
             >
-              "Sign in"
+              Sign in
             </button>
           </CardFooter>
         </form>
