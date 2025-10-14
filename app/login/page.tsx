@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { signin, signup } from "../actions/auth";
+import { signin } from "../actions/auth";
 import {
   Card,
   CardHeader,
@@ -15,8 +15,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "../lib/context/SessionContext";
 
 export default function AuthForm() {
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
-  const [name, setName] = useState("");
+  const [mode, setMode] = useState<"signin">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -25,25 +24,22 @@ export default function AuthForm() {
 
   useEffect(() => {
     if (user) {
-      router.push("/"); // Navigate to home if already logged in
+      router.push("/");
     }
   }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null); // Reset previous errors
+    setError(null);
     try {
       let response;
       if (mode === "signin") {
         response = await signin({ email, password });
-      } else {
-        response = await signup({ name, email, password });
       }
 
       if (response?.message) {
-        setError(response.message); // Display meaningful error
+        setError(response.message);
       } else {
-        // Redirect to home on successful login/signup
         router.push("/");
       }
     } catch (err: any) {
@@ -57,24 +53,10 @@ export default function AuthForm() {
     <div className="flex items-center justify-center h-screen">
       <Card className="w-full max-w-sm p-6 shadow-xl rounded-2xl border">
         <CardHeader>
-          <CardTitle className="text-xl">
-            {mode === "signin" ? "Sign In" : "Create Account"}
-          </CardTitle>
+          <CardTitle className="text-xl">"Sign In"</CardTitle>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            {mode === "signup" && (
-              <div>
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-            )}
             <div>
               <Label htmlFor="email">Email</Label>
               <Input
@@ -95,24 +77,16 @@ export default function AuthForm() {
                 required
               />
             </div>
-
-            {/* Error message */}
-            {error && (
-              <div className="text-red-600 text-sm mt-1">{error}</div>
-            )}
+            {error && <div className="text-red-600 text-sm mt-1">{error}</div>}
           </CardContent>
           <CardFooter className="flex justify-between pt-2 items-center">
-            <Button type="submit">
-              {mode === "signin" ? "Sign In" : "Sign Up"}
-            </Button>
+            <Button type="submit">"Sign In"</Button>
             <button
               type="button"
               className="text-sm text-blue-600 hover:underline"
-              onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
+              onClick={() => setMode("signin")}
             >
-              {mode === "signin"
-                ? "New user? Create account"
-                : "Already have an account? Sign in"}
+              "Sign in"
             </button>
           </CardFooter>
         </form>

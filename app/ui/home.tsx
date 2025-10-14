@@ -28,7 +28,7 @@ function RecipeCard({ recipe }: { recipe: RecipeMinimal }) {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            router.push(`/edit/${recipe.id}`);
+            router.push(`recipes/${recipe.id}/edit`);
           }}
           className="absolute top-2 right-2 bg-yellow-300 text-black text-xs px-3 py-1 font-mono border-2 border-black"
           style={{

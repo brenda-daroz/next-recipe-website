@@ -3,7 +3,7 @@ import EditRecipeForm from "@/components/form";
 import { ReactElement } from "react";
 
 interface Params {
-  id: string;
+  slug: string;
 }
 
 interface Props {
@@ -13,9 +13,9 @@ interface Props {
 export default async function EditRecipePage({
   params,
 }: Props): Promise<ReactElement> {
-  const { id } = await params;
+  const { slug } = await params;
 
-  const recipe = await getRecipeById(id);
+  const recipe = await getRecipeById(slug);
 
   if (!recipe || recipe.length === 0) {
     return <div>Recipe not found</div>;
